@@ -72,6 +72,14 @@
 		<!-- New adding end -->
 
 
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc10</artifactId>
+			<version>19.21.0.0</version>
+		</dependency>
+
+
+
 	</dependencies>
 
 	<build>
