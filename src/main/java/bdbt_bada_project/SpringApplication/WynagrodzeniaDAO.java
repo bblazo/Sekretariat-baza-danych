@@ -18,7 +18,7 @@ public class WynagrodzeniaDAO {
 
     /* Import java.util.List */
     public List<Wynagrodzenia> list(){
-        String sql = "SELECT * FROM SALES";
+        String sql = "SELECT * FROM WYNAGRODZENIA";
         List<Wynagrodzenia> listWynagrodzenia = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Wynagrodzenia.class));
         return listWynagrodzenia;
     }

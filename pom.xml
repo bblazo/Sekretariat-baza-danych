@@ -71,13 +71,15 @@
 		</dependency>
 		<!-- New adding end -->
 
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc10</artifactId>
 			<version>19.21.0.0</version>
 		</dependency>
-
 
 
 	</dependencies>
