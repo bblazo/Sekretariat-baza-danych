@@ -3,6 +3,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -24,6 +26,11 @@ public class PracownicyDAO {
     }
     /* Insert – wstawianie nowego wiersza do bazy */
     public void save(Pracownicy pracownicy) {
+        SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
+        insertActor.withTableName("pracownicy").usingColumns("nr_pracownika","imie","drugie_Imie","nazwisko","plec","nr_telefonu","data_urodzenia","adres_email","PESEL","data_zatrudnienia","data_zwolnienia","upomnienia","pochwaly", "nr_sekretariatu", "nr_adresu");
+
+        BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(pracownicy);
+        insertActor.execute(param);
     }
     /* Read – odczytywanie danych z bazy */
     public Pracownicy get(int id) {

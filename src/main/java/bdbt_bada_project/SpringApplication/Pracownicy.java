@@ -13,8 +13,8 @@ public class Pracownicy {
     private String PESEL;
     private Date Data_zatrudnienia;
     private Date Data_zwolnienia;
-    private String Upomnienia;
-    private String Pochwaly;
+    private int Upomnienia;
+    private int Pochwaly;
     private int Nr_sekretariatu;
     private int Nr_adresu;
 
@@ -22,7 +22,7 @@ public class Pracownicy {
 
     }
 
-    public Pracownicy(int nr_pracownika, String imie, String drugie_Imie, String nazwisko, String plec, int nr_telefonu, Date data_urodzenia, String adres_email, String PESEL, Date data_zatrudnienia, Date data_zwolnienia, String upomnienia, String pochwaly, int nr_sekretariatu, int nr_adresu) {
+    public Pracownicy(int nr_pracownika, String imie, String drugie_Imie, String nazwisko, String plec, int nr_telefonu, Date data_urodzenia, String adres_email, String PESEL, Date data_zatrudnienia, Date data_zwolnienia, int upomnienia, int pochwaly, int nr_sekretariatu, int nr_adresu) {
         super();
         this.Nr_pracownika = nr_pracownika;
         this.Imie = imie;
@@ -129,19 +129,19 @@ public class Pracownicy {
         Data_zwolnienia = data_zwolnienia;
     }
 
-    public String getUpomnienia() {
+    public int getUpomnienia() {
         return Upomnienia;
     }
 
-    public void setUpomnienia(String upomnienia) {
+    public void setUpomnienia(int  upomnienia) {
         Upomnienia = upomnienia;
     }
 
-    public String getPochwaly() {
+    public int getPochwaly() {
         return Pochwaly;
     }
 
-    public void setPochwaly(String pochwaly) {
+    public void setPochwaly(int pochwaly) {
         Pochwaly = pochwaly;
     }
 

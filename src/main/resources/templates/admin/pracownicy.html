@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pracownicy</title>
+</head>
+<body>
+    <div align="center">
+        <h1>Pracownicy</h1>
+
+        <a href="/new_pracownik">Dodaj nowego pracownika</a>
+
+    <table border = "1" cellpadding = "10">
+
+        <!--Table header -->
+        <thead>
+            <tr>
+                <th>Nr pracownika</th>
+                <th>Imię</th>
+                <th>Drugie imię</th>
+                <th>Nazwisko</th>
+                <th>Płeć</th>
+                <th>Nr telefonu</th>
+                <th>Data urodzenia</th>
+                <th>Adres email</th>
+                <th>PESEL</th>
+                <th>Data zatrudnienia</th>
+                <th>Data zwolnienia</th>
+                <th>Upomnienia</th>
+                <th>Pochwały</th>
+                <th>Nr sekretariatu</th>
+                <th>Nr adresu</th>
+            </tr>
+        </thead>
+
+        <!-- Table body -->
+        <tbody>
+            <tr th:each = "Pracownicy : ${listPracownicy}">
+                <td th:text = "${Pracownicy.Nr_pracownika}">Nr pracownika</td>
+                <td th:text = "${Pracownicy.Imie}">Imię</td>
+                <td th:text = "${Pracownicy.Drugie_Imie}">Drugie imię</td>
+                <td th:text = "${Pracownicy.Nazwisko}">Nazwisko</td>
+                <td th:text = "${Pracownicy.Plec}">Płeć</td>
+                <td th:text = "${Pracownicy.Nr_telefonu}">Nr telefonu</td>
+                <td th:text = "${Pracownicy.Data_urodzenia}">Data urodzenia</td>
+                <td th:text = "${Pracownicy.Adres_email}">Adres email</td>
+                <td th:text = "${Pracownicy.PESEL}">PESEL</td>
+                <td th:text = "${Pracownicy.Data_zatrudnienia}">Data zatrudnienia</td>
+                <td th:text = "${Pracownicy.Data_zwolnienia}">Data zwolnienia</td>
+                <td th:text = "${Pracownicy.Upomnienia}">Upomnienia</td>
+                <td th:text = "${Pracownicy.Pochwaly}">Pochwały</td>
+                <td th:text = "${Pracownicy.Nr_sekretariatu}">Nr sekretariatu</td>
+                <td th:text = "${Pracownicy.Nr_adresu}">Nr adresu</td>
+            </tr>
+        </tbody>
+    </table>
+
+    </div>
+</body>
+</html>

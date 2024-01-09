@@ -29,6 +29,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/", "/index").permitAll()
                 .antMatchers("/resources/static/**").permitAll()
+                .antMatchers("/pracownicy").permitAll()
                 .antMatchers("/main").authenticated()
                 .antMatchers("/main_admin").access("hasRole('ADMIN')")
                 .antMatchers("/main_user").access("hasRole('USER')")
@@ -42,5 +43,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/index")
                 .logoutSuccessUrl("/index")
                 .permitAll();
+
     }
 }
