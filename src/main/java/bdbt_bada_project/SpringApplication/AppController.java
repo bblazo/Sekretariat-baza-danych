@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -41,6 +43,11 @@ public class AppController implements WebMvcConfigurer {
             Pracownicy pracownik = new Pracownicy();
             model.addAttribute("pracownik", pracownik);
             return "admin/new_form_pracownik";
+        }
+        @RequestMapping(value = "/save", method = RequestMethod.POST)
+        public String save(@ModelAttribute("pracownik") Pracownicy pracownicy){
+            dao.save(pracownicy);
+            return "redirect:/";
         }
 
         @RequestMapping
