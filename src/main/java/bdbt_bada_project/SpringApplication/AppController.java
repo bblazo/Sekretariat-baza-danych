@@ -37,7 +37,7 @@ public class AppController implements WebMvcConfigurer {
             model.addAttribute("listPracownicy", listPracownicy);
             return "admin/pracownicy";
         }
-        @RequestMapping("/new_pracownik")
+        @RequestMapping("/new_form_pracownik")
         public String showNewForm(Model model) {
             /* Import java.util.List 8 */
             Pracownicy pracownik = new Pracownicy();

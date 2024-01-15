@@ -1,4 +1,6 @@
 package bdbt_bada_project.SpringApplication;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.sql.Date;
 
 public class Pracownicy {
@@ -8,13 +10,14 @@ public class Pracownicy {
     private String Nazwisko;
     private String Plec;
     private int Nr_telefonu;
+    //@DateTimeFormat(pattern = "yy/MM/dd")
     private Date Data_urodzenia;
     private String Adres_email;
     private String PESEL;
     private Date Data_zatrudnienia;
     private Date Data_zwolnienia;
-    private int Upomnienia;
-    private int Pochwaly;
+    private String Upomnienia;
+    private String Pochwaly;
     private int Nr_sekretariatu;
     private int Nr_adresu;
 
@@ -22,7 +25,7 @@ public class Pracownicy {
 
     }
 
-    public Pracownicy(int nr_pracownika, String imie, String drugie_Imie, String nazwisko, String plec, int nr_telefonu, Date data_urodzenia, String adres_email, String PESEL, Date data_zatrudnienia, Date data_zwolnienia, int upomnienia, int pochwaly, int nr_sekretariatu, int nr_adresu) {
+    public Pracownicy(int nr_pracownika, String imie, String drugie_Imie, String nazwisko, String plec, int nr_telefonu, Date data_urodzenia, String adres_email, String PESEL, Date data_zatrudnienia, Date data_zwolnienia, String upomnienia, String pochwaly, int nr_sekretariatu, int nr_adresu) {
         super();
         this.Nr_pracownika = nr_pracownika;
         this.Imie = imie;
@@ -69,9 +72,7 @@ public class Pracownicy {
         return Nazwisko;
     }
 
-    public void setNazwisko(String nazwisko) {
-        Nazwisko = nazwisko;
-    }
+    public void setNazwisko(String nazwisko) {Nazwisko = nazwisko;}
 
     public String getPlec() {
         return Plec;
@@ -129,19 +130,19 @@ public class Pracownicy {
         Data_zwolnienia = data_zwolnienia;
     }
 
-    public int getUpomnienia() {
+    public String getUpomnienia() {
         return Upomnienia;
     }
 
-    public void setUpomnienia(int  upomnienia) {
+    public void setUpomnienia(String  upomnienia) {
         Upomnienia = upomnienia;
     }
 
-    public int getPochwaly() {
+    public String getPochwaly() {
         return Pochwaly;
     }
 
-    public void setPochwaly(int pochwaly) {
+    public void setPochwaly(String pochwaly) {
         Pochwaly = pochwaly;
     }
 

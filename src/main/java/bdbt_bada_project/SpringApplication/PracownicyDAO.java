@@ -27,7 +27,7 @@ public class PracownicyDAO {
     /* Insert – wstawianie nowego wiersza do bazy */
     public void save(Pracownicy pracownicy) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
-        insertActor.withTableName("pracownicy").usingColumns("nr_pracownika","imie","drugie_Imie","nazwisko","plec","nr_telefonu","data_urodzenia","adres_email","PESEL","data_zatrudnienia","data_zwolnienia","upomnienia","pochwaly", "nr_sekretariatu", "nr_adresu");
+        insertActor.withTableName("PRACOWNICY").usingColumns("NR_PRACOWNIKA","IMIE","DRUGIE_IMIE","NAZWISKO","PLEC","NR_TELEFONU","DATA_URODZENIA","ADRES_EMAIL","PESEL","DATA_ZATRUDNIENIA","DATA_ZWOLNIENIA","UPOMNIENIA","POCHWALY", "NR_SEKRETARIATU", "NR_ADRESU");
 
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(pracownicy);
         insertActor.execute(param);
