@@ -9,6 +9,7 @@
         <h1>Pracownicy</h1>
 
         <a href="/new_form_pracownik">Dodaj nowego pracownika</a>
+        <br/><br/>
 
     <table border = "1" cellpadding = "10">
 
@@ -51,6 +52,10 @@
                 <td th:text = "${Pracownicy.Pochwaly}">Pochwały</td>
                 <td th:text = "${Pracownicy.Nr_sekretariatu}">Nr sekretariatu</td>
                 <td th:text = "${Pracownicy.Nr_adresu}">Nr adresu</td>
+                <td>
+                    <a th:href="@{'/edit/' + ${Pracownicy.Nr_pracownika}}">Edytuj</a>
+                </td>
+
             </tr>
         </tbody>
     </table>

@@ -33,9 +33,20 @@ public class PracownicyDAO {
         insertActor.execute(param);
     }
     /* Read – odczytywanie danych z bazy */
-    public Pracownicy get(int id) {
-        return null;
+    public Pracownicy get(int NR_PRACOWNIKA) {
+        String sql = "SELECT * FROM Pracownicy WHERE NR_PRACOWNIKA = ?";
+        Object[] args = {NR_PRACOWNIKA};
+        Pracownicy pracownicy = jdbcTemplate.queryForObject(sql, args, BeanPropertyRowMapper.newInstance(Pracownicy.class));
+        return pracownicy;
     }
+
+//    public Pracownicy get1(int id){
+//        Object[] args = {id};
+//        String sql = "SELECT * FROM SALES WHERE id = " + args[0];
+//        Pracownicy pracownicy = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Pracownicy.class));
+//        return pracownicy;
+//    }
+
     /* Update – aktualizacja danych */
     public void update(Pracownicy pracownicy) {
     }

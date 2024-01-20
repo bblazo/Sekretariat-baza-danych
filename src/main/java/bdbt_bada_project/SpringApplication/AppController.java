@@ -5,8 +5,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -48,6 +50,13 @@ public class AppController implements WebMvcConfigurer {
         public String save(@ModelAttribute("pracownik") Pracownicy pracownicy){
             dao.save(pracownicy);
             return "redirect:/";
+        }
+        @RequestMapping("/edit/{Nr_pracownika}")
+        public ModelAndView showEditForm(@PathVariable(name = "Nr_pracownika") int Nr_pracownika) {
+            ModelAndView mav = new ModelAndView("edit_form");
+            Pracownicy pracownicy = dao.get(Nr_pracownika);
+            mav.addObject("pracownicy", pracownicy);
+            return mav;
         }
 
         @RequestMapping

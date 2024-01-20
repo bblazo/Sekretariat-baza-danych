@@ -37,8 +37,11 @@ class PracownicyDAOTest extends Object {
         Pracownicy pracownicy = new Pracownicy(5, "Grzehu", "null", "Papież", "M", 321321321, new Date(1, 2, 3), "jo@o2.pl", "03445908897", new Date(11, 2, 3), new Date(2,8,3), "6", "4", 1, 1);
         dao.save(pracownicy);
     }
+    @Test
     void get() {
-        fail("Not yet implemented");
+        int NR_PRACOWNIKA=6;
+        Pracownicy pracownicy = dao.get(NR_PRACOWNIKA);
+        assertNotNull(pracownicy);
     }
 
     @Test
