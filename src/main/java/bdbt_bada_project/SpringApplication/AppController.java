@@ -53,10 +53,22 @@ public class AppController implements WebMvcConfigurer {
         }
         @RequestMapping("/edit/{Nr_pracownika}")
         public ModelAndView showEditForm(@PathVariable(name = "Nr_pracownika") int Nr_pracownika) {
-            ModelAndView mav = new ModelAndView("edit_form");
+            ModelAndView mav = new ModelAndView("admin/edit_form_pracownicy");
             Pracownicy pracownicy = dao.get(Nr_pracownika);
             mav.addObject("pracownicy", pracownicy);
             return mav;
+        }
+
+        @RequestMapping(value = "/update", method = RequestMethod.POST)
+        public String update(@ModelAttribute("pracownicy") Pracownicy pracownicy) {
+            dao.update(pracownicy);
+            return "redirect:/pracownicy";
+        }
+
+        @RequestMapping("/delete/{Nr_pracownika}")
+        public String delete(@PathVariable(name = "Nr_pracownika") int Nr_pracownika) {
+            dao.delete(Nr_pracownika);
+            return "redirect:/pracownicy";
         }
 
         @RequestMapping

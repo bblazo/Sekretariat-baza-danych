@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
@@ -49,8 +50,14 @@ public class PracownicyDAO {
 
     /* Update – aktualizacja danych */
     public void update(Pracownicy pracownicy) {
+        String sql = "UPDATE PRACOWNICY SET imie=:imie, drugie_Imie=:drugie_Imie, nazwisko=:nazwisko, plec=:plec, nr_telefonu=:nr_telefonu, data_urodzenia=:data_urodzenia, adres_email=:adres_email, PESEL=:PESEL, data_zatrudnienia=:data_zatrudnienia, data_zwolnienia=:data_zwolnienia, upomnienia=:upomnienia, pochwaly=:pochwaly WHERE Nr_pracownika=:Nr_pracownika";
+        BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(pracownicy);
+        NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
+        template.update(sql, param);
     }
     /* Delete – wybrany rekord z danym id */
-    public void delete(int id) {
+    public void delete(int Nr_pracownika) {
+        String sql = "DELETE FROM PRACOWNICY WHERE Nr_pracownika = ?";
+        jdbcTemplate.update(sql, Nr_pracownika);
     }
 }

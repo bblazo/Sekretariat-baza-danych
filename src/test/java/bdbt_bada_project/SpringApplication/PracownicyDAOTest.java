@@ -46,11 +46,28 @@ class PracownicyDAOTest extends Object {
 
     @Test
     void update() {
-        fail("Not yet implemented");
+        Pracownicy pracownicy = new Pracownicy();
+        pracownicy.setNr_pracownika(5);
+        pracownicy.setImie("Grzechu");
+        pracownicy.setDrugie_Imie("MJ");
+        pracownicy.setNazwisko("Szef");
+        pracownicy.setPlec("M");
+        pracownicy.setNr_telefonu(253758425);
+        pracownicy.setData_urodzenia(new Date(00,10,05));
+        pracownicy.setAdres_email("papaj@wp.pl");
+        pracownicy.setPESEL("00352648567");
+        pracownicy.setData_zatrudnienia(new Date(11, 04, 03));
+        pracownicy.setData_zwolnienia(new Date(12,04,01));
+        pracownicy.setUpomnienia("1");
+        pracownicy.setPochwaly("3");
+        pracownicy.setNr_sekretariatu(1);
+        pracownicy.setNr_adresu(2);
+        dao.update(pracownicy);
     }
 
     @Test
     void delete() {
-        fail("Not yet implemented");
+        int Nr_pracownika = 6;
+        dao.delete(Nr_pracownika);
     }
 }
