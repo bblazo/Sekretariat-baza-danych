@@ -35,21 +35,27 @@ class UslugiDAOTest extends Object {
 
     @Test
     void testSave() {
-        fail("Not yet implemented");
+        Uslugi uslugi = new Uslugi(); //dopisać w argumencie głupoty
+        dao.save(uslugi);
     }
 
     @Test
     void testGet() {
-        fail("Not yet implemented");
+        int NR_USLUGI=6;
+        Uslugi uslugi = dao.get(NR_USLUGI);
+        assertNotNull(uslugi);
     }
 
     @Test
     void testUpdate() {
-        fail("Not yet implemented");
+        Uslugi uslugi = new Uslugi();
+//        tutaj dopisać głupoty
+        dao.update(uslugi);
     }
 
     @Test
     void testDelete() {
-        fail("Not yet implemented");
+        int Nr_uslugi = 6;
+        dao.delete(Nr_uslugi);
     }
 }

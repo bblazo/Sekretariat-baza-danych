@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Klienci</title>
+</head>
+<body>
+<div align="center">
+  <!--  Page header  -->
+  <h1>Edytuj dane klienta</h1>
+  <!--  End line/ new line  -->
+  <br/>
+  <form action="#" th:action="@{/update}" th:object="${klienci}" method="post">
+    <!-- Table  -->
+    <table border = "1" cellpadding="10">
+      <tr>
+        <td>Numer klienta:</td>
+        <td><input type="text" th:field="*{nr_klienta}" readonly="readonly"></td>
+      </tr>
+      <tr>
+        <td>Numer telefonu:</td>
+        <td><input type="text" th:field="*{nr_telefonu}"></td>
+      </tr>
+      <tr>
+        <td>Adres e-mail:</td>
+        <td><input type="text" th:field="*{adres_email}"></td>
+      </tr>
+      <tr>
+        <td>Data przybycia:</td>
+        <td><input type="date" th:field="*{data_przybycia}"></td>
+      </tr>
+      <tr>
+        <td>Numer sekretariatu:</td>
+        <td><input type="text" th:field="*{nr_sekretariatu}" readonly="readonly"></td>
+      </tr>
+      <tr>
+        <td>Numer adresu:</td>
+        <td><input type="text" th:field="*{nr_adresu}" readonly="readonly"></td>
+      </tr>
+      <!--Button save-->
+      <tr>
+        <td colspan="2"><button type="Submit">Zapisz</button> </td>
+      </tr>
+    </table>
+  </form>
+
+</div>
+</body>
+</html>

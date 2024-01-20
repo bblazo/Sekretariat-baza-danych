@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Uslugi</title>
+</head>
+<body>
+<div align="center">
+    <h1>Uslugi</h1>
+
+    <a href="/new_form_uslugi">Dodaj nową usługę</a>
+    <br/><br/>
+
+    <table border = "1" cellpadding = "10">
+
+        <!--Table header -->
+        <thead>
+        <tr>
+            <th>Nr uslugi</th>
+            <th>Nr stanowiska</th>
+            <th>Rodzaj usługi</th>
+            <th>Nr sekretariatu</th>
+        </tr>
+        </thead>
+
+        <!-- Table body -->
+        <tbody>
+        <tr th:each = "Uslugi : ${listUslugi}">
+            <td th:text = "${Uslugi.Nr_uslugi}">Nr uslugi</td>
+            <td th:text = "${Uslugi.Nr_stanowiska}">Nr stanowiska</td>
+            <td th:text = "${Uslugi.Rodzaj_uslugi}">Rodzaj usługi</td>
+            <td th:text = "${Uslugi.Nr_sekretariatu}">Nr sekretariatu</td>
+            <td>
+                <a th:href="@{'/edit/' + ${Uslugi.Nr_uslugi}}">Edytuj</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/delete/' + ${Uslugi.Nr_uslugi}}">Usuń</a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

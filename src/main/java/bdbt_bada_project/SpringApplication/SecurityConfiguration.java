@@ -20,7 +20,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .withUser("admin")
                 .password("admin")
-                .roles("ADMIN");
+                .roles("ADMIN")
+                .and()
+                .withUser("staz")
+                .password("staz")
+                .roles("STAZ")
+                .and()
+                .withUser("pracownik")
+                .password("pracownik")
+                .roles("PRACOWNIK");
     }
     @Bean
     public PasswordEncoder getPasswordEncoder() { return NoOpPasswordEncoder.getInstance();
@@ -29,10 +37,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/", "/index").permitAll()
                 .antMatchers("/resources/static/**").permitAll()
-                .antMatchers("/pracownicy").permitAll()
                 .antMatchers("/main").authenticated()
                 .antMatchers("/main_admin").access("hasRole('ADMIN')")
                 .antMatchers("/main_user").access("hasRole('USER')")
+                .antMatchers("/adresy").permitAll()
+                .antMatchers("/klienci").permitAll()
+                .antMatchers("/uslugi").permitAll()
+                .antMatchers("/wynagrodzenia").permitAll()
+                .antMatchers("/pracownicy").permitAll() //tu trzeba będzie zmienić dostępności
                 .antMatchers("/new_form_pracownik").permitAll()
                 .and()
                 .formLogin()

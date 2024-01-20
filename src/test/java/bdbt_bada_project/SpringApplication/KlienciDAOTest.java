@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+import java.sql.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -33,21 +34,27 @@ class KlienciDAOTest extends Object {
 
     @Test
     void testSave() {
-        fail("Not yet implemented");
+        Klienci klienci = new Klienci(); //dopisać w argumencie głupoty
+        dao.save(klienci);
     }
 
     @Test
     void testGet() {
-        fail("Not yet implemented");
+        int NR_KLIENTA=6;
+        Klienci klienci = dao.get(NR_KLIENTA);
+        assertNotNull(klienci);
     }
 
     @Test
     void testUpdate() {
-        fail("Not yet implemented");
+        Klienci klienci = new Klienci();
+//        tutaj dopisać głupoty
+        dao.update(klienci);
     }
 
     @Test
     void testDelete() {
-        fail("Not yet implemented");
+        int Nr_klienta = 6;
+        dao.delete(Nr_klienta);
     }
 }

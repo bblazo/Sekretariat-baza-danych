@@ -36,21 +36,27 @@ class AdresyDAOTest extends Object {
 
     @Test
     void testSave() {
-        fail("Not yet implemented");
+        Adresy adresy = new Adresy(); //dopisać w argumencie głupoty
+        dao.save(adresy);
     }
 
     @Test
     void testGet() {
-        fail("Not yet implemented");
+        int NR_ADRESU=6;
+        Adresy adresy = dao.get(NR_ADRESU);
+        assertNotNull(adresy);
     }
 
     @Test
     void testUpdate() {
-        fail("Not yet implemented");
+        Adresy adresy = new Adresy();
+//        tutaj dopisać głupoty
+        dao.update(adresy);
     }
 
     @Test
     void testDelete() {
-        fail("Not yet implemented");
+        int Nr_adresu = 6;
+        dao.delete(Nr_adresu);
     }
 }
