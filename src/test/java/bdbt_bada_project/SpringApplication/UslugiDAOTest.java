@@ -35,13 +35,13 @@ class UslugiDAOTest extends Object {
 
     @Test
     void testSave() {
-        Uslugi uslugi = new Uslugi(); //dopisać w argumencie głupoty
+        Uslugi uslugi = new Uslugi(5, 5, "Finanse", 1);
         dao.save(uslugi);
     }
 
     @Test
     void testGet() {
-        int NR_USLUGI=6;
+        int NR_USLUGI=5;
         Uslugi uslugi = dao.get(NR_USLUGI);
         assertNotNull(uslugi);
     }
@@ -49,13 +49,16 @@ class UslugiDAOTest extends Object {
     @Test
     void testUpdate() {
         Uslugi uslugi = new Uslugi();
-//        tutaj dopisać głupoty
+        uslugi.setNr_uslugi(1);
+        uslugi.setNr_stanowiska(2);
+        uslugi.setRodzaj_uslugi("Inne");
+        uslugi.setNr_sekretariatu(1);
         dao.update(uslugi);
     }
 
     @Test
     void testDelete() {
-        int Nr_uslugi = 6;
+        int Nr_uslugi = 1;
         dao.delete(Nr_uslugi);
     }
 }

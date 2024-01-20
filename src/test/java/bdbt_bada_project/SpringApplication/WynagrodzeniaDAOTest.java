@@ -3,9 +3,12 @@ package bdbt_bada_project.SpringApplication;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 
+import java.sql.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -35,21 +38,31 @@ class WynagrodzeniaDAOTest extends Object {
 
     @Test
     void testSave() {
-        fail("Not yet implemented");
+        Wynagrodzenia wynagrodzenia = new Wynagrodzenia(16, new Date(2023, 11, 6), 2500, 2000, 3);
+        dao.save(wynagrodzenia);
     }
 
     @Test
     void testGet() {
-        fail("Not yet implemented");
+        int NR_WYNAGRODZENIA = 16;
+        Wynagrodzenia wynagrodzenia = dao.get(NR_WYNAGRODZENIA);
+        assertNotNull(wynagrodzenia);
     }
 
     @Test
     void testUpdate() {
-        fail("Not yet implemented");
+        Wynagrodzenia wynagrodzenia = new Wynagrodzenia();
+        wynagrodzenia.setNr_wynagrodzenia(16);
+        wynagrodzenia.setData(new Date(2023, 12,01));
+        wynagrodzenia.setKwota_brutto(4000);
+        wynagrodzenia.setKwota_netto(3800);
+        wynagrodzenia.setNr_pracownika(4);
+        dao.update(wynagrodzenia);
     }
 
     @Test
     void testDelete() {
-        fail("Not yet implemented");
+        int Nr_wynagrodzenia = 16;
+        dao.delete(Nr_wynagrodzenia);
     }
 }

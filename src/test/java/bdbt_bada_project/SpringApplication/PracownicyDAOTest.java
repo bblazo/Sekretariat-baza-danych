@@ -34,7 +34,7 @@ class PracownicyDAOTest extends Object {
 
     @Test
     void save() {
-        Pracownicy pracownicy = new Pracownicy(5, "Grzehu", "null", "Papież", "M", 321321321, new Date(1, 2, 3), "jo@o2.pl", "03445908897", new Date(11, 2, 3), new Date(2,8,3), "6", "4", 1, 1);
+        Pracownicy pracownicy = new Pracownicy(5, "Grzehu", "null", "Papież", "M", 321321321, new Date(2001, 2, 3), "jo@o2.pl", "03445908897", new Date(2011, 2, 3), new Date(2002,8,3), "6", "4", 1, 1);
         dao.save(pracownicy);
     }
     @Test
@@ -53,11 +53,11 @@ class PracownicyDAOTest extends Object {
         pracownicy.setNazwisko("Szef");
         pracownicy.setPlec("M");
         pracownicy.setNr_telefonu(253758425);
-        pracownicy.setData_urodzenia(new Date(00,10,05));
+        pracownicy.setData_urodzenia(new Date(2000,10,05));
         pracownicy.setAdres_email("papaj@wp.pl");
         pracownicy.setPESEL("00352648567");
-        pracownicy.setData_zatrudnienia(new Date(11, 04, 03));
-        pracownicy.setData_zwolnienia(new Date(12,04,01));
+        pracownicy.setData_zatrudnienia(new Date(2011, 04, 03));
+        pracownicy.setData_zwolnienia(new Date(2012,04,01));
         pracownicy.setUpomnienia("1");
         pracownicy.setPochwaly("3");
         pracownicy.setNr_sekretariatu(1);

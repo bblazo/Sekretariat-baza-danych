@@ -41,13 +41,6 @@ public class PracownicyDAO {
         return pracownicy;
     }
 
-//    public Pracownicy get1(int id){
-//        Object[] args = {id};
-//        String sql = "SELECT * FROM SALES WHERE id = " + args[0];
-//        Pracownicy pracownicy = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Pracownicy.class));
-//        return pracownicy;
-//    }
-
     /* Update – aktualizacja danych */
     public void update(Pracownicy pracownicy) {
         String sql = "UPDATE PRACOWNICY SET imie=:imie, drugie_Imie=:drugie_Imie, nazwisko=:nazwisko, plec=:plec, nr_telefonu=:nr_telefonu, data_urodzenia=:data_urodzenia, adres_email=:adres_email, PESEL=:PESEL, data_zatrudnienia=:data_zatrudnienia, data_zwolnienia=:data_zwolnienia, upomnienia=:upomnienia, pochwaly=:pochwaly WHERE Nr_pracownika=:Nr_pracownika";

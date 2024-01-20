@@ -36,13 +36,13 @@ class AdresyDAOTest extends Object {
 
     @Test
     void testSave() {
-        Adresy adresy = new Adresy(); //dopisać w argumencie głupoty
+        Adresy adresy = new Adresy(12, "Szulborze Wielkie", "Szarych Szeregów", 1, 3);
         dao.save(adresy);
     }
 
     @Test
     void testGet() {
-        int NR_ADRESU=6;
+        int NR_ADRESU=12;
         Adresy adresy = dao.get(NR_ADRESU);
         assertNotNull(adresy);
     }
@@ -50,13 +50,17 @@ class AdresyDAOTest extends Object {
     @Test
     void testUpdate() {
         Adresy adresy = new Adresy();
-//        tutaj dopisać głupoty
+        adresy.setNr_adresu(12);
+        adresy.setMiasto("Warszawa");
+        adresy.setUlica("Waryńskiego");
+        adresy.setNr_lokalu(12);
+        adresy.setNr_poczty(2);
         dao.update(adresy);
     }
 
     @Test
     void testDelete() {
-        int Nr_adresu = 6;
+        int Nr_adresu = 12;
         dao.delete(Nr_adresu);
     }
 }

@@ -7,19 +7,19 @@ public class Wynagrodzenia {
     private Date data;
     private int kwota_brutto;
     private int kwota_netto;
-    private int nr_poczty;
+    private int nr_pracownika;
 
     public Wynagrodzenia(){
 
     }
 
-    public Wynagrodzenia(int nr_wynagrodzenia, Date data, int kwota_brutto, int kwota_netto, int nr_poczty) {
+    public Wynagrodzenia(int nr_wynagrodzenia, Date data, int kwota_brutto, int kwota_netto, int nr_pracownika) {
         super();
         this.nr_wynagrodzenia = nr_wynagrodzenia;
         this.data = data;
         this.kwota_brutto = kwota_brutto;
         this.kwota_netto = kwota_netto;
-        this.nr_poczty = nr_poczty;
+        this.nr_pracownika = nr_pracownika;
     }
 
     public int getNr_wynagrodzenia() {
@@ -54,12 +54,12 @@ public class Wynagrodzenia {
         this.kwota_netto = kwota_netto;
     }
 
-    public int getNr_poczty() {
-        return nr_poczty;
+    public int getNr_pracownika() {
+        return nr_pracownika;
     }
 
-    public void setNr_poczty(int nr_poczty) {
-        this.nr_poczty = nr_poczty;
+    public void setNr_pracownika(int nr_pracownika) {
+        this.nr_pracownika = nr_pracownika;
     }
 
     @Override
@@ -69,7 +69,7 @@ public class Wynagrodzenia {
                 ", data=" + data +
                 ", kwota_brutto=" + kwota_brutto +
                 ", kwota_netto=" + kwota_netto +
-                ", nr_poczty=" + nr_poczty +
+                ", nr_pracownika=" + nr_pracownika +
                 '}';
     }
 }
