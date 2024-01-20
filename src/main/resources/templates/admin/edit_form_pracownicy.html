@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Pracownicy</title>
+</head>
+<body>
+<div align="center">
+  <!--  Page header  -->
+  <h1>Edytuj dane pracownika</h1>
+  <!--  End line/ new line  -->
+  <br/>
+  <form action="#" th:action="@{/update}" th:object="${pracownicy}" method="post">
+    <!-- Table  -->
+    <tr>
+      <td>Numer pracownika:</td>
+      <td><input type="text" th:field="*{nr_pracownika}" readonly="readonly"></td>
+    </tr>
+    <tr>
+      <td>Imię:</td>
+      <td><input type="text" th:field="*{imie}"></td>
+    </tr>
+    <tr>
+      <td>Drugie Imię:</td>
+      <td><input type="text" th:field="*{drugie_Imie}"></td>
+    </tr>
+    <tr>
+      <td>Nazwisko:</td>
+      <td><input type="text" th:field="*{nazwisko}"></td>
+    </tr>
+    <tr>
+      <td>Płeć:</td>
+      <td><input type="text" th:field="*{plec}"></td>
+    </tr>
+    <tr>
+      <td>Numer telefonu:</td>
+      <td><input type="text" th:field="*{nr_telefonu}"></td>
+    </tr>
+    <tr>
+      <td>Data urodzenia:</td>
+      <td><input type="date" th:field="*{data_urodzenia}"></td>
+    </tr>
+    <tr>
+      <td>Adres e-mail:</td>
+      <td><input type="text" th:field="*{adres_email}"></td>
+    </tr>
+    <tr>
+      <td>PESEL:</td>
+      <td><input type="text" th:field="*{PESEL}"></td>
+    </tr>
+    <tr>
+      <td>Data zatrudnienia:</td>
+      <td><input type="date" th:field="*{data_zatrudnienia}"></td>
+    </tr>
+    <tr>
+      <td>Data zwolnienia:</td>
+      <td><input type="date" th:field="*{data_zwolnienia}"></td>
+    </tr>
+    <tr>
+      <td>Upomnienia:</td>
+      <td><input type="text" th:field="*{upomnienia}"></td>
+    </tr>
+    <tr>
+      <td>Pochwały:</td>
+      <td><input type="text" th:field="*{pochwaly}"></td>
+    </tr>
+    <tr>
+      <td>Numer sekretariatu:</td>
+      <td><input type="text" th:field="*{nr_sekretariatu}"></td>
+    </tr>
+    <tr>
+      <td>Numer adresu:</td>
+      <td><input type="text" th:field="*{nr_adresu}"></td>
+    </tr>
+    <!--Button save-->
+    <tr>
+      <td colspan="2"><button type="submit">Zapisz</button> </td>
+    </tr>
+    </table>
+  </form>
+
+</div>
+</body>
+</html>
