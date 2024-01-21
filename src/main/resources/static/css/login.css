@@ -1,0 +1,30 @@
+body {
+    background-color: #FCF7EE;
+    justify-content: center;
+}
+
+#photo-container {
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    margin-top: 100px;
+
+}
+
+#main-container {
+    padding: 20px;
+    text-align: center;
+    margin: auto;
+}
+
+.form-group {
+    width: 30%;
+    margin: auto;
+}
+
+#main-container button {
+    background-color: #F7A543;
+    color: white;
+    margin-top: 20px;
+    border: none;
+}

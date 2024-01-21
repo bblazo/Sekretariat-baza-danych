@@ -49,7 +49,7 @@ public class AppController implements WebMvcConfigurer {
         @RequestMapping(value = "/save", method = RequestMethod.POST)
         public String save(@ModelAttribute("pracownik") Pracownicy pracownicy){
             dao.save(pracownicy);
-            return "redirect:/";
+            return "redirect:/pracownicy";
         }
         @RequestMapping("/edit/{Nr_pracownika}")
         public ModelAndView showEditForm(@PathVariable(name = "Nr_pracownika") int Nr_pracownika) {

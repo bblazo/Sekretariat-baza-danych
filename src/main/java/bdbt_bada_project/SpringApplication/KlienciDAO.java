@@ -20,14 +20,14 @@ public class KlienciDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
     /* Import java.util.List */
-    public List<Klienci> list(){
+    public List<Klienci> listKlienci(){
         String sql = "SELECT * FROM Klienci";
 
         List<Klienci> listKlienci = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Klienci.class));
         return listKlienci;
     }
     /* Insert – wstawianie nowego wiersza do bazy */
-    public void save(Klienci klienci) {
+    public void saveKlienci(Klienci klienci) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
         insertActor.withTableName("KLIENCI").usingColumns("NR_KLIENTA","NR_TELEFONU","ADRES_EMAIL","DATA_PRZYBYCIA", "NR_SEKRETARIATU", "NR_ADRESU");
 
@@ -35,21 +35,21 @@ public class KlienciDAO {
         insertActor.execute(param);
     }
     /* Read – odczytywanie danych z bazy */
-    public Klienci get(int NR_KLIENTA) {
+    public Klienci getKlienci(int NR_KLIENTA) {
         String sql = "SELECT * FROM Klienci WHERE NR_KLIENTA = ?";
         Object[] args = {NR_KLIENTA};
         Klienci klienci = jdbcTemplate.queryForObject(sql, args, BeanPropertyRowMapper.newInstance(Klienci.class));
         return klienci;
     }
     /* Update – aktualizacja danych */
-    public void update(Klienci klienci) {
+    public void updateKlienci(Klienci klienci) {
         String sql = "UPDATE KLIENCI SET nr_telefonu=:nr_telefonu, adres_email=:adres_email, data_przybycia=:data_przybycia WHERE Nr_klienta=:Nr_klienta";
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(klienci);
         NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
         template.update(sql, param);
     }
     /* Delete – wybrany rekord z danym id */
-    public void delete(int Nr_klienta) {
+    public void deleteKlienci(int Nr_klienta) {
         String sql = "DELETE FROM KLIENCI WHERE Nr_klienta = ?";
         jdbcTemplate.update(sql, Nr_klienta);
     }

@@ -27,21 +27,21 @@ class KlienciDAOTest extends Object {
 
     @Test
     void testList() {
-        List<Klienci> listKlienci = dao.list();
+        List<Klienci> listKlienci = dao.listKlienci();
         System.out.println(listKlienci);
         assertFalse(listKlienci.isEmpty());
     }
 
     @Test
     void testSave() {
-        Klienci klienci = new Klienci(8, 347522398, "kurczak@o2.pl", new Date(2023,12,8), 1, 5); //dopisać w argumencie głupoty
-        dao.save(klienci);
+        Klienci klienci = new Klienci(8, 347522398, "kurczątko@o2.pl", new Date(2023,12,8), 1, 5); //dopisać w argumencie głupoty
+        dao.saveKlienci(klienci);
     }
 
     @Test
     void testGet() {
         int NR_KLIENTA=8;
-        Klienci klienci = dao.get(NR_KLIENTA);
+        Klienci klienci = dao.getKlienci(NR_KLIENTA);
         assertNotNull(klienci);
     }
 
@@ -50,16 +50,16 @@ class KlienciDAOTest extends Object {
         Klienci klienci = new Klienci();
         klienci.setNr_klienta(8);
         klienci.setNr_telefonu(786934702);
-        klienci.setAdres_email("kurczątko@o2.pl");
+        klienci.setAdres_email("kurczątka@o2.pl");
         klienci.setData_przybycia(new Date(2023, 04,9));
         klienci.setNr_sekretariatu(1);
         klienci.setNr_adresu(3);
-        dao.update(klienci);
+        dao.updateKlienci(klienci);
     }
 
     @Test
     void testDelete() {
         int Nr_klienta = 8;
-        dao.delete(Nr_klienta);
+        dao.deleteKlienci(Nr_klienta);
     }
 }
