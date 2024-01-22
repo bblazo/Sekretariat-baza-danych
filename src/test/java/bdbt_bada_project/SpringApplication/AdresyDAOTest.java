@@ -29,7 +29,7 @@ class AdresyDAOTest extends Object {
         /*
         Import java.util
          */
-        List<Adresy> listAdresy = dao.list();
+        List<Adresy> listAdresy = dao.listAdresy();
         System.out.println(listAdresy);
         assertFalse(listAdresy.isEmpty());
     }
@@ -37,13 +37,13 @@ class AdresyDAOTest extends Object {
     @Test
     void testSave() {
         Adresy adresy = new Adresy(12, "Szulborze Wielkie", "Szarych Szeregów", 1, 3);
-        dao.save(adresy);
+        dao.saveAdresy(adresy);
     }
 
     @Test
     void testGet() {
         int NR_ADRESU=12;
-        Adresy adresy = dao.get(NR_ADRESU);
+        Adresy adresy = dao.getAdresy(NR_ADRESU);
         assertNotNull(adresy);
     }
 
@@ -55,12 +55,12 @@ class AdresyDAOTest extends Object {
         adresy.setUlica("Waryńskiego");
         adresy.setNr_lokalu(12);
         adresy.setNr_poczty(2);
-        dao.update(adresy);
+        dao.updateAdresy(adresy);
     }
 
     @Test
     void testDelete() {
         int Nr_adresu = 12;
-        dao.delete(Nr_adresu);
+        dao.deleteAdresy(Nr_adresu);
     }
 }

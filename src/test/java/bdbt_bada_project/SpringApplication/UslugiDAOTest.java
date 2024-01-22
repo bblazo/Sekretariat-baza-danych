@@ -27,8 +27,8 @@ class UslugiDAOTest extends Object {
     void testList() {
         /*
         Import java.util
-                */
-        List<Uslugi> listUslugi = dao.list();
+         */
+        List<Uslugi> listUslugi = dao.listUslugi();
         System.out.println(listUslugi);
         assertFalse(listUslugi.isEmpty());
     }
@@ -36,13 +36,13 @@ class UslugiDAOTest extends Object {
     @Test
     void testSave() {
         Uslugi uslugi = new Uslugi(5, 5, "Finanse", 1);
-        dao.save(uslugi);
+        dao.saveUslugi(uslugi);
     }
 
     @Test
     void testGet() {
         int NR_USLUGI=5;
-        Uslugi uslugi = dao.get(NR_USLUGI);
+        Uslugi uslugi = dao.getUslugi(NR_USLUGI);
         assertNotNull(uslugi);
     }
 
@@ -53,12 +53,12 @@ class UslugiDAOTest extends Object {
         uslugi.setNr_stanowiska(2);
         uslugi.setRodzaj_uslugi("Inne");
         uslugi.setNr_sekretariatu(1);
-        dao.update(uslugi);
+        dao.updateUslugi(uslugi);
     }
 
     @Test
     void testDelete() {
         int Nr_uslugi = 1;
-        dao.delete(Nr_uslugi);
+        dao.deleteUslugi(Nr_uslugi);
     }
 }

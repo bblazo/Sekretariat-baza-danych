@@ -31,7 +31,7 @@ class WynagrodzeniaDAOTest extends Object {
         /*
         Import java.util
          */
-        List<Wynagrodzenia> listWynagrodzenia = dao.list();
+        List<Wynagrodzenia> listWynagrodzenia = dao.listWynagrodzenia();
         System.out.println(listWynagrodzenia);
         assertFalse(listWynagrodzenia.isEmpty());
     }
@@ -39,13 +39,13 @@ class WynagrodzeniaDAOTest extends Object {
     @Test
     void testSave() {
         Wynagrodzenia wynagrodzenia = new Wynagrodzenia(16, new Date(2023, 11, 6), 2500, 2000, 3);
-        dao.save(wynagrodzenia);
+        dao.saveWynagrodzenia(wynagrodzenia);
     }
 
     @Test
     void testGet() {
         int NR_WYNAGRODZENIA = 16;
-        Wynagrodzenia wynagrodzenia = dao.get(NR_WYNAGRODZENIA);
+        Wynagrodzenia wynagrodzenia = dao.getWynagrodzenia(NR_WYNAGRODZENIA);
         assertNotNull(wynagrodzenia);
     }
 
@@ -57,12 +57,12 @@ class WynagrodzeniaDAOTest extends Object {
         wynagrodzenia.setKwota_brutto(4000);
         wynagrodzenia.setKwota_netto(3800);
         wynagrodzenia.setNr_pracownika(4);
-        dao.update(wynagrodzenia);
+        dao.updateWynagrodzenia(wynagrodzenia);
     }
 
     @Test
     void testDelete() {
         int Nr_wynagrodzenia = 16;
-        dao.delete(Nr_wynagrodzenia);
+        dao.deleteWynagrodzenia(Nr_wynagrodzenia);
     }
 }

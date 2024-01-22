@@ -27,7 +27,7 @@ class PracownicyDAOTest extends Object {
 
     @Test
     void list() {
-        List<Pracownicy> listPracownicy = dao.list();
+        List<Pracownicy> listPracownicy = dao.listPracownicy();
         System.out.println(listPracownicy);
         assertFalse(listPracownicy.isEmpty());
     }
@@ -35,12 +35,12 @@ class PracownicyDAOTest extends Object {
     @Test
     void save() {
         Pracownicy pracownicy = new Pracownicy(5, "Grzehu", "null", "Papież", "M", 321321321, new Date(2001, 2, 3), "jo@o2.pl", "03445908897", new Date(2011, 2, 3), new Date(2002,8,3), "6", "4", 1, 1);
-        dao.save(pracownicy);
+        dao.savePracownicy(pracownicy);
     }
     @Test
     void get() {
         int NR_PRACOWNIKA=6;
-        Pracownicy pracownicy = dao.get(NR_PRACOWNIKA);
+        Pracownicy pracownicy = dao.getPracownicy(NR_PRACOWNIKA);
         assertNotNull(pracownicy);
     }
 
@@ -62,12 +62,12 @@ class PracownicyDAOTest extends Object {
         pracownicy.setPochwaly("3");
         pracownicy.setNr_sekretariatu(1);
         pracownicy.setNr_adresu(2);
-        dao.update(pracownicy);
+        dao.updatePracownicy(pracownicy);
     }
 
     @Test
     void delete() {
         int Nr_pracownika = 6;
-        dao.delete(Nr_pracownika);
+        dao.deletePracownicy(Nr_pracownika);
     }
 }
