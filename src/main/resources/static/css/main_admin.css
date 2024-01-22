@@ -1,0 +1,52 @@
+body {
+    background-color: #FCF7EE;
+}
+#main_container {
+    padding: 10px;
+}
+.col-md-10 button {
+    background-color: #F7A543;
+    color: white;
+    margin-top: 20px;
+    border: none;
+}
+#admin_label{
+    display: block;
+    font-size: 24px;
+
+}
+#middle-container {
+    width: 80%;
+    padding: 10px;
+    margin: auto;
+    height: 200px;
+}
+
+#middle-container .tablica {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: calc(20% - 20px);
+    height: 200px;
+    margin: 10px;
+    float: left;
+    padding: 10px;
+    background-color: #FDFAF6;
+    border: 2px solid #ccc;
+    text-align: center;
+}
+#middle-container .tablica button {
+    background-color: #F7A543;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: block;
+    margin-top: 25px;
+}
+

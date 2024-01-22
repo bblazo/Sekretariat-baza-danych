@@ -5,14 +5,14 @@
     <title>Main Admin Page</title>
 
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
-
+    <link th:href="@{/css/main_admin.css}" rel="stylesheet" />
 </head>
 <body>
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-        <a class="navbar-brand" href="/">BDBT Spring Boot Project - Part II</a>
+        <a class="navbar-brand" href="/">SEKRETARIAT</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -22,17 +22,11 @@
             <ul class="navbar-nav ml-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/index}">Home</a>
-                </li>
-
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Main
-                        <span class="sr-only">(current)</span>
-                    </a>
+                    <a class="nav-link" th:href="@{/index}">Strona główna</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">You are logged in as <b
+                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">Jesteś zalogowany jako <b
                             style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
                 </li>
 
@@ -47,20 +41,48 @@
         <div class="col-md-10 mt-5">
             <form method="post" th:action="@{/index}">
                 <div class="form-group">
-                    <label style="font-size:30px" th:inline="text">Welcome <a
-                            style="color:lightskyblue; text-transform:capitalize"><b>[[${#httpServletRequest.remoteUser}]]</b></a>
-                        to the main page!</label>
-                    <div style="font-size:20px">If you want to log out, click "Logout" button under this text.</div>
+                    <label id="admin_label" th:inline="text">Zalogowano pomyślnie jako <a
+                            style="color:lightskyblue; text-transform:capitalize"><b>[[${#httpServletRequest.remoteUser}]].</b></a>
+                    </label>
+                    <div style="font-size:20px">Jeśli chcesz się wylogować kliknij przycisk wyloguj.</div>
                 </div>
 
-                <button class="btn btn-primary" type="submit" onclick="successfullyLogout()" value="Sign Out">Logout
+                <button class="btn btn-primary" type="submit" onclick="successfullyLogout()" value="Sign Out">Wyloguj
                 </button>
             </form>
         </div>
 
     </div>
 </div>
-
+<div id="main_container">
+    <div id="middle-container">
+        <div class="tablica">Pracownicy
+            <a th:href="@{/pracownicy}">
+                <button>Podgląd</button>
+            </a>
+        </div>
+        <div class="tablica">Klienci
+            <a th:href="@{/klienci}">
+                <button>Podgląd</button>
+            </a>
+        </div>
+        <div class="tablica">Adresy
+            <a th:href="@{/adresy}">
+                <button>Podgląd</button>
+            </a>
+        </div>
+        <div class="tablica">Usługi
+            <a th:href="@{/uslugi}">
+                <button>Podgląd</button>
+            </a>
+        </div>
+        <div class="tablica">Wynagrodzenia
+            <a th:href="@{/wynagrodzenia}">
+                <button>Podgląd</button>
+            </a>
+        </div>
+    </div>
+</div>
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>

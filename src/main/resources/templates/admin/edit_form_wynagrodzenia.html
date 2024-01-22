@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wynagrodzenia</title>
+</head>
+<body>,
+<div align="center">
+    <!-- Page header -->
+    <h1>Edytuj wynagrodzenie</h1>
+
+    <!-- End line/ new line-->
+    <br/>
+    <form action="#" th:action="@{/save}" th:object="${wynagrodzenie}" method="post">
+        <table border = "1" cellpadding="10">
+            <!--  Table row -->
+            <tr>
+                <td>Numer wynagrodzenia:</td>
+                <td><input type="text" th:field="*{nr_wynagrodzenia}" readonly="readonly"></td>
+            </tr>
+            <tr>
+                <td>Data:</td>
+                <td><input type="date" th:field="*{data}"></td>
+            </tr>
+            <tr>
+                <td>Kwota brutto:</td>
+                <td><input type="date" th:field="*{kwota_brutto}"></td>
+            </tr>
+            <tr>
+                <td>Kwota netto:</td>
+                <td><input type="text" th:field="*{kwota_netto}"></td>
+            </tr>
+            <tr>
+                <td>Numer pracownika:</td>
+                <td><input type="text" th:field="*{nr_pracownika}" readonly="readonly"></td>
+            </tr>
+            <!--Button save-->
+            <tr>
+                <td colspan="2"><button type="Submit">Zapisz</button> </td>
+            </tr>
+        </table>
+    </form>
+
+</div>
+</body>
+</html>

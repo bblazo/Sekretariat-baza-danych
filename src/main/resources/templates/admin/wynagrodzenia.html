@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wynagrodzenia</title>
+</head>
+<body>
+<div align="center">
+    <h1>Wynagrodzenia</h1>
+
+    <a href="/new_form_wynagrodzenia">Dodaj nowe wynagrodzenie</a>
+    <br/><br/>
+
+    <table border = "1" cellpadding = "10">
+
+        <!--Table header -->
+        <thead>
+        <tr>
+            <th>Nr wynagrodzenia</th>
+            <th>Data</th>
+            <th>Kwota brutto</th>
+            <th>Kwota netto</th>
+            <th>Nr pracownika</th>
+        </tr>
+        </thead>
+
+        <!-- Table body -->
+        <tbody>
+        <tr th:each = "Wynagrodzenia : ${listWynagrodzenia}">
+            <td th:text = "${Wynagrodzenia.Nr_wynagrodzenia}">Nr wynagrodzenia</td>
+            <td th:text = "${Wynagrodzenia.Data}">Data</td>
+            <td th:text = "${Wynagrodzenia.Kwota_brutto}">Kwota brutto</td>
+            <td th:text = "${Wynagrodzenia.Kwota_netto}">Kwota netto</td>
+            <td th:text = "${Wynagrodzenia.Nr_pracownika}">Nr pracownika</td>
+            <td>
+                <a th:href="@{'/edit/' + ${Wynagrodzenia.Nr_wynagrodzenia}}">Edytuj</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/delete/' + ${Wynagrodzenia.Nr_wynagrodzenia}}">Usuń</a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
