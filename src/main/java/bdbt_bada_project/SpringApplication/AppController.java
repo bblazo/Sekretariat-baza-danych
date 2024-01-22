@@ -71,6 +71,47 @@ public class AppController implements WebMvcConfigurer {
             return "redirect:/pracownicy";
         }
 
+        @Autowired
+        private KlienciDAO daoK;
+
+        @RequestMapping("/klienci")
+        public String viewHomePageKlienci(Model model) {
+
+            List<Klienci> listKlienci = daoK.listKlienci();
+            model.addAttribute("listKlienci", listKlienci);
+            return "admin/klienci";
+        }
+        @RequestMapping("/new_form_klient")
+        public String showNewFormKlienci(Model model) {
+            Klienci klient = new Klienci();
+            model.addAttribute("klient", klient);
+            return "admin/new_form_klient";
+        }
+        @RequestMapping(value = "/saveKlienci", method = RequestMethod.POST)
+        public String save(@ModelAttribute("klient") Klienci klienci){
+            daoK.saveKlienci(klienci);
+            return "redirect:/klienci";
+        }
+        @RequestMapping("/klienci_edit/{Nr_klienta}")
+        public ModelAndView showEditFormKlienci(@PathVariable(name = "Nr_klienta") int Nr_klienta) {
+            ModelAndView mav = new ModelAndView("admin/edit_form_klienci");
+            Klienci klienci = daoK.getKlienci(Nr_klienta);
+            mav.addObject("klienci", klienci);
+            return mav;
+        }
+
+        @RequestMapping(value = "/updateKlienci", method = RequestMethod.POST)
+        public String update(@ModelAttribute("klienci") Klienci klienci) {
+            daoK.updateKlienci(klienci);
+            return "redirect:/klienci";
+        }
+
+        @RequestMapping("/klienci_delete/{Nr_klienta}")
+        public String delete(@PathVariable(name = "Nr_klienta") int Nr_klienta, @ModelAttribute("klient") Klienci klienci) {
+            daoK.deleteKlienci(Nr_klienta);
+            return "redirect:/klienci";
+        }
+
         @RequestMapping
                 ("/main"
                 )
