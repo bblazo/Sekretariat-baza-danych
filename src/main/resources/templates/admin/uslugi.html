@@ -31,9 +31,9 @@
             <td th:text = "${Uslugi.Rodzaj_uslugi}">Rodzaj usługi</td>
             <td th:text = "${Uslugi.Nr_sekretariatu}">Nr sekretariatu</td>
             <td>
-                <a th:href="@{'/edit/' + ${Uslugi.Nr_uslugi}}">Edytuj</a>
+                <a th:href="@{'/uslugi_edit/' + ${Uslugi.Nr_uslugi}}">Edytuj</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/delete/' + ${Uslugi.Nr_uslugi}}">Usuń</a>
+                <a th:href="@{'/uslugi_delete/' + ${Uslugi.Nr_uslugi}}">Usuń</a>
             </td>
 
         </tr>
