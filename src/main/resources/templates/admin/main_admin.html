@@ -44,11 +44,9 @@
                     <label id="admin_label" th:inline="text">Zalogowano pomyślnie jako <a
                             style="color:lightskyblue; text-transform:capitalize"><b>[[${#httpServletRequest.remoteUser}]].</b></a>
                     </label>
-                    <div style="font-size:20px">Jeśli chcesz się wylogować kliknij przycisk wyloguj.</div>
                 </div>
 
-                <button class="btn btn-primary" type="submit" onclick="successfullyLogout()" value="Sign Out">Wyloguj
-                </button>
+
             </form>
         </div>
 
@@ -81,6 +79,11 @@
                 <button>Podgląd</button>
             </a>
         </div>
+    </div>
+    <div id="log-out-container">
+        <label>Jeśli chcesz się wylogować kliknij przycisk wyloguj.</label>
+        <button class="btn btn-primary" type="submit" onclick="successfullyLogout()" value="Sign Out">Wyloguj
+        </button>
     </div>
 </div>
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>

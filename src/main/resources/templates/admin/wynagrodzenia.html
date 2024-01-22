@@ -3,45 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <title>Wynagrodzenia</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link rel="stylesheet" href="css/tables.css">
+
+    <style>
+        table {
+            margin: auto;
+        }
+    </style>
 </head>
 <body>
-<div align="center">
-    <h1>Wynagrodzenia</h1>
 
-    <a href="/new_form_wynagrodzenia">Dodaj nowe wynagrodzenie</a>
-    <br/><br/>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">SEKRETARIAT - WYNAGRODZENIA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
 
-    <table border = "1" cellpadding = "10">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/index}">Strona główna</a>
+                </li>
 
-        <!--Table header -->
-        <thead>
-        <tr>
-            <th>Nr wynagrodzenia</th>
-            <th>Data</th>
-            <th>Kwota brutto</th>
-            <th>Kwota netto</th>
-            <th>Nr pracownika</th>
-        </tr>
-        </thead>
+                <li class="nav-item">
+                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">Jesteś zalogowany jako <b
+                            style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
+                </li>
 
-        <!-- Table body -->
-        <tbody>
-        <tr th:each = "Wynagrodzenia : ${listWynagrodzenia}">
-            <td th:text = "${Wynagrodzenia.Nr_wynagrodzenia}">Nr wynagrodzenia</td>
-            <td th:text = "${Wynagrodzenia.Data}">Data</td>
-            <td th:text = "${Wynagrodzenia.Kwota_brutto}">Kwota brutto</td>
-            <td th:text = "${Wynagrodzenia.Kwota_netto}">Kwota netto</td>
-            <td th:text = "${Wynagrodzenia.Nr_pracownika}">Nr pracownika</td>
-            <td>
-                <a th:href="@{'/wynagrodzenia_edit/' + ${Wynagrodzenia.Nr_wynagrodzenia}}">Edytuj</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/wynagrodzenia_delete/' + ${Wynagrodzenia.Nr_wynagrodzenia}}">Usuń</a>
-            </td>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-        </tr>
-        </tbody>
-    </table>
+<div id="main-container">
+    <div align="center">
+        <h1>Wynagrodzenia</h1>
 
+        <a href="/new_form_wynagrodzenia"><button>Dodaj nowe wynagrodzenie</button></a>
+        <br/><br/>
+    </div>
+    <div class="container">
+        <table border = "1" cellpadding = "10">
+
+            <!--Table header -->
+            <thead>
+            <tr>
+                <th>Nr wynagrodzenia</th>
+                <th>Data</th>
+                <th>Kwota brutto</th>
+                <th>Kwota netto</th>
+                <th>Nr pracownika</th>
+                <th>Działanie</th>
+            </tr>
+            </thead>
+
+            <!-- Table body -->
+            <tbody>
+            <tr th:each = "Wynagrodzenia : ${listWynagrodzenia}">
+                <td th:text = "${Wynagrodzenia.Nr_wynagrodzenia}">Nr wynagrodzenia</td>
+                <td th:text = "${Wynagrodzenia.Data}">Data</td>
+                <td th:text = "${Wynagrodzenia.Kwota_brutto}">Kwota brutto</td>
+                <td th:text = "${Wynagrodzenia.Kwota_netto}">Kwota netto</td>
+                <td th:text = "${Wynagrodzenia.Nr_pracownika}">Nr pracownika</td>
+                <td>
+                    <a th:href="@{'/wynagrodzenia_edit/' + ${Wynagrodzenia.Nr_wynagrodzenia}}"style="color: #EE6821;">Edytuj</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/wynagrodzenia_delete/' + ${Wynagrodzenia.Nr_wynagrodzenia}}"style="color: #EE6821;">Usuń</a>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+
 </body>
 </html>

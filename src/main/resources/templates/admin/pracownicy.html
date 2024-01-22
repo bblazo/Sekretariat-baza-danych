@@ -3,65 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <title>Pracownicy</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link rel="stylesheet" href="css/tables.css">
+
 </head>
 <body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">SEKRETARIAT - PRACOWNICY</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/index}">Strona główna</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">Jesteś zalogowany jako <b
+                            style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="main-container">
     <div align="center">
         <h1>Pracownicy</h1>
 
-        <a href="/new_form_pracownik">Dodaj nowego pracownika</a>
+        <a th:href="@{/new_form_pracownik}"><button>Dodaj nowego pracownika</button></a>
         <br/><br/>
-
-    <table border = "1" cellpadding = "10">
-
-        <!--Table header -->
-        <thead>
-            <tr>
-                <th>Nr pracownika</th>
-                <th>Imię</th>
-                <th>Drugie imię</th>
-                <th>Nazwisko</th>
-                <th>Płeć</th>
-                <th>Nr telefonu</th>
-                <th>Data urodzenia</th>
-                <th>Adres email</th>
-                <th>PESEL</th>
-                <th>Data zatrudnienia</th>
-                <th>Data zwolnienia</th>
-                <th>Upomnienia</th>
-                <th>Pochwały</th>
-                <th>Nr sekretariatu</th>
-                <th>Nr adresu</th>
-            </tr>
-        </thead>
-
-        <!-- Table body -->
-        <tbody>
-            <tr th:each = "Pracownicy : ${listPracownicy}">
-                <td th:text = "${Pracownicy.Nr_pracownika}">Nr pracownika</td>
-                <td th:text = "${Pracownicy.Imie}">Imię</td>
-                <td th:text = "${Pracownicy.Drugie_Imie}">Drugie imię</td>
-                <td th:text = "${Pracownicy.Nazwisko}">Nazwisko</td>
-                <td th:text = "${Pracownicy.Plec}">Płeć</td>
-                <td th:text = "${Pracownicy.Nr_telefonu}">Nr telefonu</td>
-                <td th:text = "${Pracownicy.Data_urodzenia}">Data urodzenia</td>
-                <td th:text = "${Pracownicy.Adres_email}">Adres email</td>
-                <td th:text = "${Pracownicy.PESEL}">PESEL</td>
-                <td th:text = "${Pracownicy.Data_zatrudnienia}">Data zatrudnienia</td>
-                <td th:text = "${Pracownicy.Data_zwolnienia}">Data zwolnienia</td>
-                <td th:text = "${Pracownicy.Upomnienia}">Upomnienia</td>
-                <td th:text = "${Pracownicy.Pochwaly}">Pochwały</td>
-                <td th:text = "${Pracownicy.Nr_sekretariatu}">Nr sekretariatu</td>
-                <td th:text = "${Pracownicy.Nr_adresu}">Nr adresu</td>
-                <td>
-                    <a th:href="@{'/edit/' + ${Pracownicy.Nr_pracownika}}">Edytuj</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a th:href="@{'/delete/' + ${Pracownicy.Nr_pracownika}}">Usuń</a>
-                </td>
-
-            </tr>
-        </tbody>
-    </table>
-
     </div>
+    <div class="container">
+        <table>
+
+            <!--Table header -->
+            <thead>
+                <tr>
+                    <th>Nr pracownika</th>
+                    <th>Imię</th>
+                    <th>Drugie imię</th>
+                    <th>Nazwisko</th>
+                    <th>Płeć</th>
+                    <th>Nr telefonu</th>
+                    <th>Data urodzenia</th>
+                    <th>Adres email</th>
+                    <th>PESEL</th>
+                    <th>Data zatrudnienia</th>
+                    <th>Data zwolnienia</th>
+                    <th>Upomnienia</th>
+                    <th>Pochwały</th>
+                    <th>Nr sekretariatu</th>
+                    <th>Nr adresu</th>
+                    <th>Działanie</th>
+                </tr>
+            </thead>
+
+            <!-- Table body -->
+            <tbody>
+                <tr th:each = "Pracownicy : ${listPracownicy}">
+                    <td th:text = "${Pracownicy.Nr_pracownika}">Nr pracownika</td>
+                    <td th:text = "${Pracownicy.Imie}">Imię</td>
+                    <td th:text = "${Pracownicy.Drugie_Imie}">Drugie imię</td>
+                    <td th:text = "${Pracownicy.Nazwisko}">Nazwisko</td>
+                    <td th:text = "${Pracownicy.Plec}">Płeć</td>
+                    <td th:text = "${Pracownicy.Nr_telefonu}">Nr telefonu</td>
+                    <td th:text = "${Pracownicy.Data_urodzenia}">Data urodzenia</td>
+                    <td th:text = "${Pracownicy.Adres_email}">Adres email</td>
+                    <td th:text = "${Pracownicy.PESEL}">PESEL</td>
+                    <td th:text = "${Pracownicy.Data_zatrudnienia}">Data zatrudnienia</td>
+                    <td th:text = "${Pracownicy.Data_zwolnienia}">Data zwolnienia</td>
+                    <td th:text = "${Pracownicy.Upomnienia}">Upomnienia</td>
+                    <td th:text = "${Pracownicy.Pochwaly}">Pochwały</td>
+                    <td th:text = "${Pracownicy.Nr_sekretariatu}">Nr sekretariatu</td>
+                    <td th:text = "${Pracownicy.Nr_adresu}">Nr adresu</td>
+                    <td>
+                        <a th:href="@{'/edit/' + ${Pracownicy.Nr_pracownika}}"style="color: #EE6821;">Edytuj</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a th:href="@{'/delete/' + ${Pracownicy.Nr_pracownika}}"style="color: #EE6821;">Usuń</a>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+
 </body>
 </html>

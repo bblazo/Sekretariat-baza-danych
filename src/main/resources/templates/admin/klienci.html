@@ -3,47 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <title>Klienci</title>
+
+  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+  <link rel="stylesheet" href="css/tables.css">
+
+  <style>
+    table {
+      margin: auto;
+    }
+  </style>
 </head>
 <body>
-<div align="center">
-  <h1>Klienci</h1>
 
-  <a href="/new_form_klient">Dodaj nowego klienta</a>
-  <br/><br/>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">SEKRETARIAT - KLIENCI</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
 
-  <table border = "1" cellpadding = "10">
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/index}">Strona główna</a>
+        </li>
 
-    <!--Table header -->
-    <thead>
-    <tr>
-      <th>Nr klienta</th>
-      <th>Nr telefonu</th>
-      <th>Adres email</th>
-      <th>Data przybycia</th>
-      <th>Nr sekretariatu</th>
-      <th>Nr adresu</th>
-    </tr>
-    </thead>
+        <li class="nav-item">
+          <a class="nav-link" th:inline="text" style="color:lightskyblue;">Jesteś zalogowany jako <b
+                  style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
+        </li>
 
-    <!-- Table body -->
-    <tbody>
-    <tr th:each = "Klienci : ${listKlienci}">
-      <td th:text = "${Klienci.Nr_klienta}">Nr klienta</td>
-      <td th:text = "${Klienci.Nr_telefonu}">Nr telefonu</td>
-      <td th:text = "${Klienci.Adres_email}">Adres email</td>
-      <td th:text = "${Klienci.Data_przybycia}">Data przybycia</td>
-      <td th:text = "${Klienci.Nr_sekretariatu}">Nr sekretariatu</td>
-      <td th:text = "${Klienci.Nr_adresu}">Nr adresu</td>
-      <td>
-        <a th:href="@{'/klienci_edit/' + ${Klienci.Nr_klienta}}">Edytuj</a>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <a th:href="@{'/klienci_delete/' + ${Klienci.Nr_klienta}}">Usuń</a>
-      </td>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-    </tr>
-    </tbody>
-  </table>
+<div id="main-container">
+  <div align="center">
+    <h1>Klienci</h1>
 
+    <a href="/new_form_klient"><button>Dodaj nowego klienta</button></a>
+    <br/><br/>
+  </div>
+  <div class="container">
+    <table >
+
+      <!--Table header -->
+      <thead>
+      <tr>
+        <th>Nr klienta</th>
+        <th>Nr telefonu</th>
+        <th>Adres email</th>
+        <th>Data przybycia</th>
+        <th>Nr sekretariatu</th>
+        <th>Nr adresu</th>
+        <th>Działanie</th>
+      </tr>
+      </thead>
+
+      <!-- Table body -->
+      <tbody>
+      <tr th:each = "Klienci : ${listKlienci}">
+        <td th:text = "${Klienci.Nr_klienta}">Nr klienta</td>
+        <td th:text = "${Klienci.Nr_telefonu}">Nr telefonu</td>
+        <td th:text = "${Klienci.Adres_email}">Adres email</td>
+        <td th:text = "${Klienci.Data_przybycia}">Data przybycia</td>
+        <td th:text = "${Klienci.Nr_sekretariatu}">Nr sekretariatu</td>
+        <td th:text = "${Klienci.Nr_adresu}">Nr adresu</td>
+        <td>
+          <a th:href="@{'/klienci_edit/' + ${Klienci.Nr_klienta}}"style="color: #EE6821;">Edytuj</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a th:href="@{'/klienci_delete/' + ${Klienci.Nr_klienta}}"style="color: #EE6821;">Usuń</a>
+        </td>
+
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
 </div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+
 </body>
 </html>
