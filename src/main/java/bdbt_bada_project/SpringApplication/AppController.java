@@ -37,14 +37,12 @@ public class AppController implements WebMvcConfigurer {
 
         @RequestMapping("/pracownicy")
         public String viewHomePage(Model model) {
-            /* Import java.util.List 8 */
             List<Pracownicy> listPracownicy = daoP.listPracownicy();
             model.addAttribute("listPracownicy", listPracownicy);
             return "admin/pracownicy";
         }
         @RequestMapping("/new_form_pracownik")
         public String showNewForm(Model model) {
-            /* Import java.util.List 8 */
             Pracownicy pracownik = new Pracownicy();
             model.addAttribute("pracownik", pracownik);
             return "admin/new_form_pracownik";
@@ -131,13 +129,12 @@ public class AppController implements WebMvcConfigurer {
         }
         @RequestMapping("/new_form_uslugi")
         public String showNewFormUslugi(Model model) {
-            /* Import java.util.List 8 */
-            Uslugi uslugi = new Uslugi();
-            model.addAttribute("uslugi", uslugi);
+            Uslugi usluga = new Uslugi();
+            model.addAttribute("usluga", usluga);
             return "admin/new_form_uslugi";
         }
         @RequestMapping(value = "/saveUslugi", method = RequestMethod.POST)
-        public String save(@ModelAttribute("klient") Uslugi uslugi){
+        public String save(@ModelAttribute("usluga") Uslugi uslugi){
             daoU.saveUslugi(uslugi);
             return "redirect:/uslugi";
         }
