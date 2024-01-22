@@ -33,9 +33,9 @@
             <td th:text = "${Wynagrodzenia.Kwota_netto}">Kwota netto</td>
             <td th:text = "${Wynagrodzenia.Nr_pracownika}">Nr pracownika</td>
             <td>
-                <a th:href="@{'/edit/' + ${Wynagrodzenia.Nr_wynagrodzenia}}">Edytuj</a>
+                <a th:href="@{'/wynagrodzenia_edit/' + ${Wynagrodzenia.Nr_wynagrodzenia}}">Edytuj</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/delete/' + ${Wynagrodzenia.Nr_wynagrodzenia}}">Usuń</a>
+                <a th:href="@{'/wynagrodzenia_delete/' + ${Wynagrodzenia.Nr_wynagrodzenia}}">Usuń</a>
             </td>
 
         </tr>

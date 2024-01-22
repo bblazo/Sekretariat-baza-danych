@@ -158,6 +158,92 @@ public class AppController implements WebMvcConfigurer {
             return "redirect:/uslugi";
         }
 
+        //Adresy
+
+        @Autowired
+        private AdresyDAO daoA;
+
+        @RequestMapping("/adresy")
+        public String viewHomePageAdresy(Model model) {
+            /* Import java.util.List 8 */
+            List<Adresy> listAdresy = daoA.listAdresy();
+            model.addAttribute("listAdresy", listAdresy);
+            return "admin/adresy";
+        }
+        @RequestMapping("/new_form_adresy")
+        public String showNewFormAdresy(Model model) {
+            Adresy adres = new Adresy();
+            model.addAttribute("adres", adres);
+            return "admin/new_form_adresy";
+        }
+        @RequestMapping(value = "/saveAdresy", method = RequestMethod.POST)
+        public String save(@ModelAttribute("adres") Adresy adresy){
+            daoA.saveAdresy(adresy);
+            return "redirect:/adresy";
+        }
+        @RequestMapping("/adresy_edit/{Nr_adresu}")
+        public ModelAndView showEditFormAdresy(@PathVariable(name = "Nr_adresu") int Nr_adresu) {
+            ModelAndView mav = new ModelAndView("admin/edit_form_adresy");
+            Adresy adresy = daoA.getAdresy(Nr_adresu);
+            mav.addObject("adresy", adresy);
+            return mav;
+        }
+
+        @RequestMapping(value = "/updateAdresy", method = RequestMethod.POST)
+        public String update(@ModelAttribute("adresy") Adresy adresy) {
+            daoA.updateAdresy(adresy);
+            return "redirect:/adresy";
+        }
+
+        @RequestMapping("/adresy_delete/{Nr_adresu}")
+        public String delete(@PathVariable(name = "Nr_adresu") int Nr_adresu, @ModelAttribute("adres") Adresy adresy) {
+            daoA.deleteAdresy(Nr_adresu);
+            return "redirect:/adresy";
+        }
+
+        //Wynagrodzenia
+
+        @Autowired
+        private WynagrodzeniaDAO daoW;
+
+        @RequestMapping("/wynagrodzenia")
+        public String viewHomePageW(Model model) {
+            /* Import java.util.List 8 */
+            List<Wynagrodzenia> listWynagrodzenia = daoW.listWynagrodzenia();
+            model.addAttribute("listWynagrodzenia", listWynagrodzenia);
+            return "admin/wynagrodzenia";
+        }
+        @RequestMapping("/new_form_wynagrodzenia")
+        public String showNewFormW(Model model) {
+            Wynagrodzenia wynagrodzenie = new Wynagrodzenia();
+            model.addAttribute("wynagrodzenie", wynagrodzenie);
+            return "admin/new_form_wynagrodzenia";
+        }
+        @RequestMapping(value = "/saveWynagrodzenia", method = RequestMethod.POST)
+        public String save(@ModelAttribute("wynagrodzenie") Wynagrodzenia wynagrodzenia){
+            daoW.saveWynagrodzenia(wynagrodzenia);
+            return "redirect:/wynagrodzenia";
+        }
+        @RequestMapping("/wynagrodzenia_edit/{Nr_wynagrodzenia}")
+        public ModelAndView showEditFormW(@PathVariable(name = "Nr_wynagrodzenia") int Nr_wynagrodzenia) {
+            ModelAndView mav = new ModelAndView("admin/edit_form_wynagrodzenia");
+            Wynagrodzenia wynagrodzenia = daoW.getWynagrodzenia(Nr_wynagrodzenia);
+            mav.addObject("wynagrodzenia", wynagrodzenia);
+            return mav;
+        }
+
+        @RequestMapping(value = "/updateWynagrodzenia", method = RequestMethod.POST)
+        public String update(@ModelAttribute("wynagrodzenia") Wynagrodzenia wynagrodzenia) {
+            daoW.updateWynagrodzenia(wynagrodzenia);
+            return "redirect:/wynagrodzenia";
+        }
+
+        @RequestMapping("/wynagrodzenia_delete/{Nr_wynagrodzenia}")
+        public String delete(@PathVariable(name = "Nr_wynagrodzenia") int Nr_wynagrodzenia, @ModelAttribute("wynagrodzenie") Wynagrodzenia wynagrodzenia) {
+            daoW.deleteWynagrodzenia(Nr_wynagrodzenia);
+            return "redirect:/wynagrodzenia";
+        }
+
         @RequestMapping
                 ("/main"
                 )
