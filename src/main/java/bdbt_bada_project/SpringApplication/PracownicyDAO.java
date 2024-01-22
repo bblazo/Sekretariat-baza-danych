@@ -19,14 +19,14 @@ public class PracownicyDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
     /* Import java.util.List */
-    public List<Pracownicy> list(){
+    public List<Pracownicy> listPracownicy(){
         String sql = "SELECT * FROM Pracownicy";
 
         List<Pracownicy> listPracownicy = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Pracownicy.class));
         return listPracownicy;
     }
     /* Insert – wstawianie nowego wiersza do bazy */
-    public void save(Pracownicy pracownicy) {
+    public void savePracownicy(Pracownicy pracownicy) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
         insertActor.withTableName("PRACOWNICY").usingColumns("NR_PRACOWNIKA","IMIE","DRUGIE_IMIE","NAZWISKO","PLEC","NR_TELEFONU","DATA_URODZENIA","ADRES_EMAIL","PESEL","DATA_ZATRUDNIENIA","DATA_ZWOLNIENIA","UPOMNIENIA","POCHWALY", "NR_SEKRETARIATU", "NR_ADRESU");
 
@@ -34,7 +34,7 @@ public class PracownicyDAO {
         insertActor.execute(param);
     }
     /* Read – odczytywanie danych z bazy */
-    public Pracownicy get(int NR_PRACOWNIKA) {
+    public Pracownicy getPracownicy(int NR_PRACOWNIKA) {
         String sql = "SELECT * FROM Pracownicy WHERE NR_PRACOWNIKA = ?";
         Object[] args = {NR_PRACOWNIKA};
         Pracownicy pracownicy = jdbcTemplate.queryForObject(sql, args, BeanPropertyRowMapper.newInstance(Pracownicy.class));
@@ -42,14 +42,14 @@ public class PracownicyDAO {
     }
 
     /* Update – aktualizacja danych */
-    public void update(Pracownicy pracownicy) {
+    public void updatePracownicy(Pracownicy pracownicy) {
         String sql = "UPDATE PRACOWNICY SET imie=:imie, drugie_Imie=:drugie_Imie, nazwisko=:nazwisko, plec=:plec, nr_telefonu=:nr_telefonu, data_urodzenia=:data_urodzenia, adres_email=:adres_email, PESEL=:PESEL, data_zatrudnienia=:data_zatrudnienia, data_zwolnienia=:data_zwolnienia, upomnienia=:upomnienia, pochwaly=:pochwaly WHERE Nr_pracownika=:Nr_pracownika";
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(pracownicy);
         NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
         template.update(sql, param);
     }
     /* Delete – wybrany rekord z danym id */
-    public void delete(int Nr_pracownika) {
+    public void deletePracownicy(int Nr_pracownika) {
         String sql = "DELETE FROM PRACOWNICY WHERE Nr_pracownika = ?";
         jdbcTemplate.update(sql, Nr_pracownika);
     }

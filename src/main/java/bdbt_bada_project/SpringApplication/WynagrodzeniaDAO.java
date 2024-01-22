@@ -20,13 +20,13 @@ public class WynagrodzeniaDAO {
     }
 
     /* Import java.util.List */
-    public List<Wynagrodzenia> list(){
+    public List<Wynagrodzenia> listWynagrodzenia(){
         String sql = "SELECT * FROM WYNAGRODZENIA";
         List<Wynagrodzenia> listWynagrodzenia = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Wynagrodzenia.class));
         return listWynagrodzenia;
     }
     /* Insert – wstawianie nowego wiersza do bazy */
-    public void save(Wynagrodzenia wynagrodzenia) {
+    public void saveWynagrodzenia(Wynagrodzenia wynagrodzenia) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
         insertActor.withTableName("WYNAGRODZENIA").usingColumns("NR_WYNAGRODZENIA", "DATA", "KWOTA_BRUTTO", "KWOTA_NETTO", "NR_PRACOWNIKA");
 
@@ -34,21 +34,21 @@ public class WynagrodzeniaDAO {
         insertActor.execute(param);
     }
     /* Read – odczytywanie danych z bazy */
-    public Wynagrodzenia get(int NR_WYNAGRODZENIA) {
+    public Wynagrodzenia getWynagrodzenia(int NR_WYNAGRODZENIA) {
         String sql = "SELECT * FROM Wynagrodzenia WHERE NR_WYNAGRODZENIA = ?";
         Object[] args = {NR_WYNAGRODZENIA};
         Wynagrodzenia wynagrodzenia = jdbcTemplate.queryForObject(sql, args, BeanPropertyRowMapper.newInstance(Wynagrodzenia.class));
         return wynagrodzenia;
     }
     /* Update – aktualizacja danych */
-    public void update(Wynagrodzenia wynagrodzenia) {
+    public void updateWynagrodzenia(Wynagrodzenia wynagrodzenia) {
         String sql = "UPDATE WYNAGRODZENIA SET data=:data, kwota_brutto=:kwota_brutto, kwota_netto=:kwota_netto WHERE Nr_wynagrodzenia=:Nr_wynagrodzenia";
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(wynagrodzenia);
         NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
         template.update(sql, param);
     }
     /* Delete – wybrany rekord z danym id */
-    public void delete(int Nr_wynagrodzenia) {
+    public void deleteWynagrodzenia(int Nr_wynagrodzenia) {
         String sql = "DELETE FROM WYNAGRODZENIA WHERE Nr_wynagrodzenia = ?";
         jdbcTemplate.update(sql, Nr_wynagrodzenia);
     }
