@@ -50,7 +50,7 @@
     <div align="center">
         <h1>Adresy</h1>
 
-        <a href="/new_form_adresy"><button>Dodaj nowy adres</button></a>
+        <a href="/main_admin/new_form_adresy"><button>Dodaj nowy adres</button></a>
         <br/><br/>
     </div>
     <div class="container">
@@ -77,11 +77,10 @@
                     <td th:text = "${Adresy.Nr_lokalu}">Nr lokalu</td>
                     <td th:text = "${Adresy.Nr_poczty}">Nr poczty</td>
                     <td>
-                        <a th:href="@{'/adresy_edit/' + ${Adresy.Nr_adresu}}"style="color: #EE6821;">Edytuj</a>
+                        <a th:href="@{'/main_admin/adresy_edit/' + ${Adresy.Nr_adresu}}"style="color: #EE6821;">Edytuj</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a th:href="@{'/adresy_delete/' + ${Adresy.Nr_adresu}}"style="color: #EE6821;">Usuń</a>
+                        <a th:href="@{'/main_admin/adresy_delete/' + ${Adresy.Nr_adresu}}"style="color: #EE6821;">Usuń</a>
                     </td>
-
                 </tr>
             </tbody>
         </table>

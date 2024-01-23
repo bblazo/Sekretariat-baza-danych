@@ -49,7 +49,7 @@
   <div align="center">
     <h1>Klienci</h1>
 
-    <a href="/new_form_klient"><button>Dodaj nowego klienta</button></a>
+    <a href="/main_admin/new_form_klient"><button>Dodaj nowego klienta</button></a>
     <br/><br/>
   </div>
   <div class="container">
@@ -78,9 +78,9 @@
         <td th:text = "${Klienci.Nr_sekretariatu}">Nr sekretariatu</td>
         <td th:text = "${Klienci.Nr_adresu}">Nr adresu</td>
         <td>
-          <a th:href="@{'/klienci_edit/' + ${Klienci.Nr_klienta}}"style="color: #EE6821;">Edytuj</a>
+          <a th:href="@{'/main_admin/klienci_edit/' + ${Klienci.Nr_klienta}}"style="color: #EE6821;">Edytuj</a>
           &nbsp;&nbsp;&nbsp;&nbsp;
-          <a th:href="@{'/klienci_delete/' + ${Klienci.Nr_klienta}}"style="color: #EE6821;">Usuń</a>
+          <a th:href="@{'/main_admin/klienci_delete/' + ${Klienci.Nr_klienta}}"style="color: #EE6821;">Usuń</a>
         </td>
 
       </tr>
