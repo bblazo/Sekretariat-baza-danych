@@ -5,7 +5,7 @@
     <title>Wynagrodzenia</title>
 
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
-    <link rel="stylesheet" href="css/tables.css">
+    <link th:rel="stylesheet" th:href="@{css/tables.css}"/>
 
     <style>
         table {
@@ -76,9 +76,9 @@
                 <td th:text = "${Wynagrodzenia.Kwota_netto}">Kwota netto</td>
                 <td th:text = "${Wynagrodzenia.Nr_pracownika}">Nr pracownika</td>
                 <td>
-                    <a th:href="@{'/wynagrodzenia_edit/' + ${Wynagrodzenia.Nr_wynagrodzenia}}"style="color: #EE6821;">Edytuj</a>
+                    <a th:href="@{'/main_admin/wynagrodzenia_edit/' + ${Wynagrodzenia.Nr_wynagrodzenia}}"style="color: #EE6821;">Edytuj</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a th:href="@{'/wynagrodzenia_delete/' + ${Wynagrodzenia.Nr_wynagrodzenia}}"style="color: #EE6821;">Usuń</a>
+                    <a th:href="@{'/main_admin/wynagrodzenia_delete/' + ${Wynagrodzenia.Nr_wynagrodzenia}}"style="color: #EE6821;">Usuń</a>
                 </td>
 
             </tr>

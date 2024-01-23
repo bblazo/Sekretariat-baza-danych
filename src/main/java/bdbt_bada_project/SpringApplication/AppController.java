@@ -202,7 +202,7 @@ public class AppController implements WebMvcConfigurer {
             return "user/new_form_usluga_inne";
         }
 
-        @RequestMapping("/main_admin/new_form_usluga_doradztwo")
+        @RequestMapping("/main_user/new_form_usluga_doradztwo")
         public String showNewFormUslugiDoradztwo(Model model) {
             Uslugi usluga = new Uslugi();
             model.addAttribute("usluga", usluga);
@@ -211,7 +211,7 @@ public class AppController implements WebMvcConfigurer {
             return "user/new_form_usluga_doradztwo";
         }
 
-        @RequestMapping("/main_admin/new_form_usluga_konsultacje")
+        @RequestMapping("/main_user/new_form_usluga_konsultacje")
         public String showNewFormUslugiKonsultacje(Model model) {
             Uslugi usluga = new Uslugi();
             model.addAttribute("usluga", usluga);
@@ -220,13 +220,20 @@ public class AppController implements WebMvcConfigurer {
             return "user/new_form_usluga_konsultacje";
         }
 
-        @RequestMapping("/main_admin/new_form_usluga_finanse")
+        @RequestMapping("/main_user/new_form_usluga_finanse")
         public String showNewFormUslugiFinanse(Model model) {
             Uslugi usluga = new Uslugi();
             model.addAttribute("usluga", usluga);
             usluga.setRodzaj_uslugi("Finanse");
 
             return "user/new_form_usluga_finanse";
+        }
+
+        @RequestMapping(value = "/main_user/saveUslugiUser", method = RequestMethod.POST)
+        public String saveU(@ModelAttribute("usluga") Uslugi uslugi){
+            daoU.saveUslugi(uslugi);
+
+            return "redirect:/main_user";
         }
 
         //Adresy
