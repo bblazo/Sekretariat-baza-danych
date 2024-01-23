@@ -17,6 +17,7 @@ import java.util.List;
 
 @Configuration
 public class AppController implements WebMvcConfigurer {
+
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/index").setViewName("index");
         registry.addViewController("/").setViewName("index");
@@ -28,10 +29,13 @@ public class AppController implements WebMvcConfigurer {
         registry.addViewController("/main_pracownik").setViewName("pracownik/main_pracownik");
         //registry.addViewController("/pracownicy").setViewName("admin/pracownicy");
     }
+
     @Controller
     public class DashboardController
     {
+
         //Pracownicy
+
         @Autowired
         private PracownicyDAO daoP;
 
@@ -156,6 +160,42 @@ public class AppController implements WebMvcConfigurer {
         public String delete(@PathVariable(name = "Nr_uslugi") int Nr_uslugi, @ModelAttribute("klient") Uslugi uslugi) {
             daoU.deleteUslugi(Nr_uslugi);
             return "redirect:/uslugi";
+        }
+
+        @RequestMapping("/new_form_usluga_inne")
+        public String showNewFormUslugiInne(Model model) {
+            Uslugi usluga = new Uslugi();
+            model.addAttribute("usluga", usluga);
+            usluga.setRodzaj_uslugi("Inne");
+
+            return "user/new_form_usluga_inne";
+        }
+
+        @RequestMapping("/new_form_usluga_doradztwo")
+        public String showNewFormUslugiDoradztwo(Model model) {
+            Uslugi usluga = new Uslugi();
+            model.addAttribute("usluga", usluga);
+            usluga.setRodzaj_uslugi("Doradztwo");
+
+            return "user/new_form_usluga_doradztwo";
+        }
+
+        @RequestMapping("/new_form_usluga_konsultacje")
+        public String showNewFormUslugiKonsultacje(Model model) {
+            Uslugi usluga = new Uslugi();
+            model.addAttribute("usluga", usluga);
+            usluga.setRodzaj_uslugi("Konsultacje");
+
+            return "user/new_form_usluga_konsultacje";
+        }
+
+        @RequestMapping("/new_form_usluga_finanse")
+        public String showNewFormUslugiFinanse(Model model) {
+            Uslugi usluga = new Uslugi();
+            model.addAttribute("usluga", usluga);
+            usluga.setRodzaj_uslugi("Finanse");
+
+            return "user/new_form_usluga_finanse";
         }
 
         //Adresy
