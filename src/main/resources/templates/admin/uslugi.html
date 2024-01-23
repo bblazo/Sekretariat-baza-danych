@@ -49,7 +49,7 @@
     <div align="center">
         <h1>Usługi</h1>
 
-        <a href="/new_form_uslugi"><button>Dodaj nową usługę</button></a>
+        <a href="/main_admin/new_form_uslugi"><button>Dodaj nową usługę</button></a>
         <br/><br/>
     </div>
     <div class="container">
@@ -74,9 +74,9 @@
                 <td th:text = "${Uslugi.Rodzaj_uslugi}">Rodzaj usługi</td>
                 <td th:text = "${Uslugi.Nr_sekretariatu}">Nr sekretariatu</td>
                 <td>
-                    <a th:href="@{'/uslugi_edit/' + ${Uslugi.Nr_uslugi}}"style="color: #EE6821;">Edytuj</a>
+                    <a th:href="@{'/main_admin/uslugi_edit/' + ${Uslugi.Nr_uslugi}}"style="color: #EE6821;">Edytuj</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a th:href="@{'/uslugi_delete/' + ${Uslugi.Nr_uslugi}}"style="color: #EE6821;">Usuń</a>
+                    <a th:href="@{'/main_admin/uslugi_delete/' + ${Uslugi.Nr_uslugi}}"style="color: #EE6821;">Usuń</a>
                 </td>
 
             </tr>
