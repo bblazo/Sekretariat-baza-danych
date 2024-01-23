@@ -63,7 +63,12 @@
             </tr>
             <tr>
                 <th class="first-column">Płeć:</th>
-                <td class="second-column"><input type="text" th:field="*{plec}"></td>
+                <td class="second-column">
+                    <select th:field="*{plec}">
+                        <option value="K" th:text="Kobieta"></option>
+                        <option value="M" th:text="Mężczyzna"></option>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <th class="first-column">Numer telefonu:</th>
@@ -99,7 +104,7 @@
             </tr>
             <tr>
                 <th class="first-column">Numer sekretariatu:</th>
-                <td class="second-column"><input type="text" th:field="*{nr_sekretariatu}"></td>
+                <td class="second-column"><input type="text" th:field="*{nr_sekretariatu}" readonly="readonly"></td>
             </tr>
             <tr>
                 <th class="first-column">Numer adresu:</th>

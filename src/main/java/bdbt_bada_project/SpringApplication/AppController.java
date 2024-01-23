@@ -43,36 +43,46 @@ public class AppController implements WebMvcConfigurer {
         public String viewHomePage(Model model) {
             List<Pracownicy> listPracownicy = daoP.listPracownicy();
             model.addAttribute("listPracownicy", listPracownicy);
+
             return "admin/pracownicy";
         }
+
         @RequestMapping("/new_form_pracownik")
         public String showNewForm(Model model) {
             Pracownicy pracownik = new Pracownicy();
             model.addAttribute("pracownik", pracownik);
+            pracownik.setNr_sekretariatu(1);
+
             return "admin/new_form_pracownik";
         }
+
         @RequestMapping(value = "/save", method = RequestMethod.POST)
         public String save(@ModelAttribute("pracownik") Pracownicy pracownicy){
             daoP.savePracownicy(pracownicy);
+
             return "redirect:/pracownicy";
         }
+
         @RequestMapping("/edit/{Nr_pracownika}")
         public ModelAndView showEditForm(@PathVariable(name = "Nr_pracownika") int Nr_pracownika) {
             ModelAndView mav = new ModelAndView("admin/edit_form_pracownicy");
             Pracownicy pracownicy = daoP.getPracownicy(Nr_pracownika);
             mav.addObject("pracownicy", pracownicy);
+
             return mav;
         }
 
         @RequestMapping(value = "/update", method = RequestMethod.POST)
         public String update(@ModelAttribute("pracownicy") Pracownicy pracownicy) {
             daoP.updatePracownicy(pracownicy);
+
             return "redirect:/pracownicy";
         }
 
         @RequestMapping("/delete/{Nr_pracownika}")
         public String delete(@PathVariable(name = "Nr_pracownika") int Nr_pracownika) {
             daoP.deletePracownicy(Nr_pracownika);
+
             return "redirect:/pracownicy";
         }
 
@@ -85,36 +95,46 @@ public class AppController implements WebMvcConfigurer {
         public String viewHomePageKlienci(Model model) {
             List<Klienci> listKlienci = daoK.listKlienci();
             model.addAttribute("listKlienci", listKlienci);
+
             return "admin/klienci";
         }
+
         @RequestMapping("/new_form_klient")
         public String showNewFormKlienci(Model model) {
             Klienci klient = new Klienci();
             model.addAttribute("klient", klient);
+            klient.setNr_sekretariatu(1);
+
             return "admin/new_form_klient";
         }
+
         @RequestMapping(value = "/saveKlienci", method = RequestMethod.POST)
         public String save(@ModelAttribute("klient") Klienci klienci){
             daoK.saveKlienci(klienci);
+
             return "redirect:/klienci";
         }
+
         @RequestMapping("/klienci_edit/{Nr_klienta}")
         public ModelAndView showEditFormKlienci(@PathVariable(name = "Nr_klienta") int Nr_klienta) {
             ModelAndView mav = new ModelAndView("admin/edit_form_klienci");
             Klienci klienci = daoK.getKlienci(Nr_klienta);
             mav.addObject("klienci", klienci);
+
             return mav;
         }
 
         @RequestMapping(value = "/updateKlienci", method = RequestMethod.POST)
         public String update(@ModelAttribute("klienci") Klienci klienci) {
             daoK.updateKlienci(klienci);
+
             return "redirect:/klienci";
         }
 
         @RequestMapping("/klienci_delete/{Nr_klienta}")
         public String delete(@PathVariable(name = "Nr_klienta") int Nr_klienta, @ModelAttribute("klient") Klienci klienci) {
             daoK.deleteKlienci(Nr_klienta);
+
             return "redirect:/klienci";
         }
 
@@ -129,36 +149,47 @@ public class AppController implements WebMvcConfigurer {
             /* Import java.util.List 8 */
             List<Uslugi> listUslugi = daoU.listUslugi();
             model.addAttribute("listUslugi", listUslugi);
+
             return "admin/uslugi";
         }
+
         @RequestMapping("/new_form_uslugi")
         public String showNewFormUslugi(Model model) {
             Uslugi usluga = new Uslugi();
             model.addAttribute("usluga", usluga);
+            usluga.setNr_sekretariatu(1);
+
             return "admin/new_form_uslugi";
         }
+
         @RequestMapping(value = "/saveUslugi", method = RequestMethod.POST)
         public String save(@ModelAttribute("usluga") Uslugi uslugi){
             daoU.saveUslugi(uslugi);
+
             return "redirect:/uslugi";
         }
+
         @RequestMapping("/uslugi_edit/{Nr_uslugi}")
         public ModelAndView showEditFormUslugi(@PathVariable(name = "Nr_uslugi") int Nr_uslugi) {
             ModelAndView mav = new ModelAndView("admin/edit_form_uslugi");
             Uslugi uslugi = daoU.getUslugi(Nr_uslugi);
             mav.addObject("uslugi", uslugi);
+
             return mav;
         }
+
 
         @RequestMapping(value = "/updateUslugi", method = RequestMethod.POST)
         public String update(@ModelAttribute("uslugi") Uslugi uslugi) {
             daoU.updateUslugi(uslugi);
+
             return "redirect:/uslugi";
         }
 
         @RequestMapping("/uslugi_delete/{Nr_uslugi}")
         public String delete(@PathVariable(name = "Nr_uslugi") int Nr_uslugi, @ModelAttribute("klient") Uslugi uslugi) {
             daoU.deleteUslugi(Nr_uslugi);
+
             return "redirect:/uslugi";
         }
 
@@ -208,36 +239,45 @@ public class AppController implements WebMvcConfigurer {
             /* Import java.util.List 8 */
             List<Adresy> listAdresy = daoA.listAdresy();
             model.addAttribute("listAdresy", listAdresy);
+
             return "admin/adresy";
         }
+
         @RequestMapping("/new_form_adresy")
         public String showNewFormAdresy(Model model) {
             Adresy adres = new Adresy();
             model.addAttribute("adres", adres);
+
             return "admin/new_form_adresy";
         }
+
         @RequestMapping(value = "/saveAdresy", method = RequestMethod.POST)
         public String save(@ModelAttribute("adres") Adresy adresy){
             daoA.saveAdresy(adresy);
+
             return "redirect:/adresy";
         }
+
         @RequestMapping("/adresy_edit/{Nr_adresu}")
         public ModelAndView showEditFormAdresy(@PathVariable(name = "Nr_adresu") int Nr_adresu) {
             ModelAndView mav = new ModelAndView("admin/edit_form_adresy");
             Adresy adresy = daoA.getAdresy(Nr_adresu);
             mav.addObject("adresy", adresy);
+
             return mav;
         }
 
         @RequestMapping(value = "/updateAdresy", method = RequestMethod.POST)
         public String update(@ModelAttribute("adresy") Adresy adresy) {
             daoA.updateAdresy(adresy);
+
             return "redirect:/adresy";
         }
 
         @RequestMapping("/adresy_delete/{Nr_adresu}")
         public String delete(@PathVariable(name = "Nr_adresu") int Nr_adresu, @ModelAttribute("adres") Adresy adresy) {
             daoA.deleteAdresy(Nr_adresu);
+
             return "redirect:/adresy";
         }
 
@@ -251,36 +291,45 @@ public class AppController implements WebMvcConfigurer {
             /* Import java.util.List 8 */
             List<Wynagrodzenia> listWynagrodzenia = daoW.listWynagrodzenia();
             model.addAttribute("listWynagrodzenia", listWynagrodzenia);
+
             return "admin/wynagrodzenia";
         }
+
         @RequestMapping("/new_form_wynagrodzenia")
         public String showNewFormW(Model model) {
             Wynagrodzenia wynagrodzenie = new Wynagrodzenia();
             model.addAttribute("wynagrodzenie", wynagrodzenie);
+
             return "admin/new_form_wynagrodzenia";
         }
+
         @RequestMapping(value = "/saveWynagrodzenia", method = RequestMethod.POST)
         public String save(@ModelAttribute("wynagrodzenie") Wynagrodzenia wynagrodzenia){
             daoW.saveWynagrodzenia(wynagrodzenia);
+
             return "redirect:/wynagrodzenia";
         }
+
         @RequestMapping("/wynagrodzenia_edit/{Nr_wynagrodzenia}")
         public ModelAndView showEditFormW(@PathVariable(name = "Nr_wynagrodzenia") int Nr_wynagrodzenia) {
             ModelAndView mav = new ModelAndView("admin/edit_form_wynagrodzenia");
             Wynagrodzenia wynagrodzenia = daoW.getWynagrodzenia(Nr_wynagrodzenia);
             mav.addObject("wynagrodzenia", wynagrodzenia);
+
             return mav;
         }
 
         @RequestMapping(value = "/updateWynagrodzenia", method = RequestMethod.POST)
         public String update(@ModelAttribute("wynagrodzenia") Wynagrodzenia wynagrodzenia) {
             daoW.updateWynagrodzenia(wynagrodzenia);
+
             return "redirect:/wynagrodzenia";
         }
 
         @RequestMapping("/wynagrodzenia_delete/{Nr_wynagrodzenia}")
         public String delete(@PathVariable(name = "Nr_wynagrodzenia") int Nr_wynagrodzenia, @ModelAttribute("wynagrodzenie") Wynagrodzenia wynagrodzenia) {
             daoW.deleteWynagrodzenia(Nr_wynagrodzenia);
+
             return "redirect:/wynagrodzenia";
         }
 
