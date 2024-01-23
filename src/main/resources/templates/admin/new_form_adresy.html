@@ -4,36 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <title>Nowy adres</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link rel="stylesheet" href="css/new_edit_forms.css">
+
 </head>
-<body>,
-<div align="center">
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">SEKRETARIAT</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/index}">Strona główna</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/main_admin}">Mój profil</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">Jesteś zalogowany jako <b
+                            style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="main-container" align="center">
     <!-- Page header -->
-    <h1>Dodaj nowy adres</h1>
+    <h1 style="margin-top: 20px;">Dodaj nowy adres</h1>
 
     <!-- End line/ new line-->
     <br/>
     <form action="#" th:action="@{/saveAdresy}" th:object="${adres}" method="post">
-        <table border = "1" cellpadding="10">
+        <table>
             <!--  Table row -->
             <tr>
-                <td>Numer adresu:</td>
-                <td><input type="text" th:field="*{nr_adresu}"></td>
+                <th class="first-column">Miasto:</th>
+                <td class="second-column"><input type="text" th:field="*{miasto}"></td>
             </tr>
             <tr>
-                <td>Miasto:</td>
-                <td><input type="text" th:field="*{miasto}"></td>
+                <th class="first-column">Ulica:</th>
+                <td class="second-column"><input type="text" th:field="*{ulica}"></td>
             </tr>
             <tr>
-                <td>Ulica:</td>
-                <td><input type="text" th:field="*{ulica}"></td>
+                <th class="first-column">Numer lokalu:</th>
+                <td class="second-column"><input type="text" th:field="*{nr_lokalu}"></td>
             </tr>
             <tr>
-                <td>Numer lokalu:</td>
-                <td><input type="text" th:field="*{nr_lokalu}"></td>
-            </tr>
-            <tr>
-                <td>Numer poczty:</td>
-                <td><input type="text" th:field="*{nr_poczty}"></td>
+                <th class="first-column">Numer poczty:</th>
+                <td class="second-column"><input type="text" th:field="*{nr_poczty}"></td>
             </tr>
             <!--Button save-->
             <tr>
@@ -43,5 +74,11 @@
     </form>
 
 </div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+
 </body>
 </html>

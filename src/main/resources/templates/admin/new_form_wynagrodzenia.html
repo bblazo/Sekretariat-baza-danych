@@ -4,11 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Nowe wynagrodzenie</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link rel="stylesheet" href="css/new_edit_forms.css">
+
 </head>
-<body>,
-<div align="center">
+<body>
+
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">SEKRETARIAT</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/index}">Strona główna</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/main_admin}">Mój profil</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">Jesteś zalogowany jako <b
+                            style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="main-container" align="center">
     <!-- Page header -->
-    <h1>Dodaj nowe wynagrodzenie</h1>
+    <h1 style="margin-top: 20px;">Dodaj nowe wynagrodzenie</h1>
 
     <!-- End line/ new line-->
     <br/>
@@ -16,32 +52,34 @@
         <table border = "1" cellpadding="10">
             <!--  Table row -->
             <tr>
-                <td>Numer wynagrodzenia:</td>
-                <td><input type="text" th:field="*{nr_wynagrodzenia}"></td>
+                <th class="first-column">Data:</th>
+                <td class="second-column"><input type="date" th:field="*{data}"></td>
             </tr>
             <tr>
-                <td>Data:</td>
-                <td><input type="date" th:field="*{data}"></td>
+                <th class="first-column">Kwota brutto:</th>
+                <td class="second-column"><input type="text" th:field="*{kwota_brutto}"></td>
             </tr>
             <tr>
-                <td>Kwota brutto:</td>
-                <td><input type="text" th:field="*{kwota_brutto}"></td>
+                <th class="first-column">Kwota netto:</th>
+                <td class="second-column"><input type="text" th:field="*{kwota_netto}"></td>
             </tr>
             <tr>
-                <td>Kwota netto:</td>
-                <td><input type="text" th:field="*{kwota_netto}"></td>
-            </tr>
-            <tr>
-                <td>Numer pracownika:</td>
-                <td><input type="text" th:field="*{nr_pracownika}"></td>
+                <th class="first-column">Numer pracownika:</th>
+                <td class="second-column"><input type="text" th:field="*{nr_pracownika}"></td>
             </tr>
             <!--Button save-->
             <tr>
-                <td colspan="2"><button type="Submit">Zapisz</button> </td>
+                <td colspan="2" style="border: none;"><button type="Submit">Zapisz</button> </td>
             </tr>
         </table>
     </form>
 
 </div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+
 </body>
 </html>

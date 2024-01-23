@@ -82,10 +82,16 @@
     </div>
     <div id="log-out-container">
         <label>Jeśli chcesz się wylogować kliknij przycisk wyloguj.</label>
-        <button class="btn btn-primary" type="submit" onclick="successfullyLogout()" value="Sign Out">Wyloguj
-        </button>
+        <form action="#" th:action="@{/index}" method="post">
+            <button class="btn btn-primary" type="submit" onclick="successfullyLogout()" value="Sign Out">Wyloguj</button>
+        </form>
     </div>
+
 </div>
+
+
+
+
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
