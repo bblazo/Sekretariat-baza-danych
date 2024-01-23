@@ -10,7 +10,8 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-        <a class="navbar-brand" href="/">SEKRETARIAT</a>
+        <a class="navbar-brand" href="/">SEKRETARIAT<img th:src="@{/images/sekretariat.png}" alt="Sekretariat logo" width="30" height="30">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -34,6 +35,7 @@
     </div>
 </nav>
 
+
 <div id="main_container">
     <div id="upper-container">
         <label id="welcome-label">Witaj na stronie sekretariatu!</label>
@@ -41,28 +43,49 @@
         <label id="info-label">Zapoznaj się ze świadczonymi usługami wybierając poniżej.</label>
     </div>
 
-    <div id="middle-container">
-        <div class="usluga">Finanse
-        <a th:href="@{/login}">
-            <button>Skorzystaj</button>
-        </a>
+    <div class="usluga-container">
+        <div class="usluga-photo">
+            <img th:src="@{/images/money.png}" alt="Finanse logo" width="30" height="30">
         </div>
-        <div class="usluga">Konsultacje
-            <a th:href="@{/login}">
-            <button>Skorzystaj</button>
-            </a>
-        </div>
-        <div class="usluga">Doradztwo
-            <a th:href="@{/login}">
-            <button>Skorzystaj</button>
-            </a>
-        </div>
-        <div class="usluga">Inne
-            <a th:href="@{/login}">
-            <button>Skorzystaj</button>
-            </a>
+        <div class="usluga-div-info">
+            <label>Finanse</label>
+            <label>Pomoc w zakresie zarządzania rachunkowością, przygotowywania raportów finansowych, monitorowania budżetów oraz obsługi transakcji finansowych.</label>
         </div>
     </div>
+
+    <div class="usluga-container">
+        <div class="usluga-photo">
+            <img th:src="@{/images/documents.png}" alt="Doradztwo logo" width="30" height="30">
+        </div>
+        <div class="usluga-div-info">
+            <label>Doradztwo</label>
+            <label>Pomoc w zakresie organizacji pracy biura, optymalizacji procesów biznesowych oraz implementacji nowoczesnych technologii w celu usprawnienia funkcjonowania firmy.
+                Pomoc w zarządzaniu dokumentacją oraz przestrzeganiu przepisów prawa.</label>
+        </div>
+    </div>
+
+    <div class="usluga-container">
+        <div class="usluga-photo">
+            <img th:src="@{/images/phone.png}" alt="Konsultacje logo" width="30" height="30">
+        </div>
+        <div class="usluga-div-info">
+            <label>Konsultacje</label>
+            <label>Usługi związane z planowaniem strategicznym, rozwojem firmy, zarządzaniem personelem oraz analizą rynkową. Konsultacje te mają na celu wspieranie decyzji strategicznych oraz efektywnego rozwoju organizacji.
+            </label>
+        </div>
+    </div>
+
+    <div class="usluga-container">
+        <div class="usluga-photo">
+            <img th:src="@{/images/info.png}" alt="Inne logo" width="30" height="30">
+        </div>
+        <div class="usluga-div-info">
+            <label>Inne</label>
+            <label>Obsługa korespondencji, organizacja spotkań, zarządzanie terminarzem czy rezerwacja podróży służbowych.</label>
+        </div>
+    </div>
+
+
 </div>
 
 <div id="contact-container">
