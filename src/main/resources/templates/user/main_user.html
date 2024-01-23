@@ -50,7 +50,7 @@
                     <label style="font-size:30px" th:inline="text">Welcome <a
                             style="color:lightskyblue; text-transform:capitalize"><b>[[${#httpServletRequest.remoteUser}]]</b></a>
                         to the main page!</label>
-                    <div style="font-size:20px">If you want to logout, click "Logout" button under this text.</div>
+                    <div style="font-size:20px">If you want to log out, click "Logout" button under this text.</div>
                 </div>
 
                 <button class="btn btn-primary" type="submit" onclick="successfullyLogout()" value="Sign Out">Logout
@@ -61,6 +61,30 @@
     </div>
 </div>
 
+
+<div>Finanse
+    <a href="/new_form_usluga_finanse">
+        <button>Skorzystaj</button>
+    </a>
+</div>
+
+<div>Inne
+    <a href="/new_form_usluga_inne">
+        <button>Skorzystaj</button>
+    </a>
+</div>
+
+<div>Konsultacje
+    <a href="/new_form_usluga_konsultacje">
+        <button>Skorzystaj</button>
+    </a>
+</div>
+
+<div>Doradztwo
+    <a href="/new_form_usluga_doradztwo">
+        <button>Skorzystaj</button>
+    </a>
+</div>
 
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
