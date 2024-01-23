@@ -3,27 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>Usługi</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{/css/new_edit_forms.css}"/>
+
 </head>
 <body>
-<div align="center">
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">SEKRETARIAT</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/index}">Strona główna</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/main_admin}">Mój profil</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">Jesteś zalogowany jako <b
+                            style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="main-container" align="center">
     <!--  Page header  -->
-    <h1>Edytuj dane usługi</h1>
+    <h1 style="margin-top: 20px;">Edytuj dane usługi</h1>
     <!--  End line/ new line  -->
     <br/>
     <form action="#" th:action="@{/updateUslugi}" th:object="${uslugi}" method="post">
         <!-- Table  -->
         <table border = "1" cellpadding="10">
             <tr>
-                <td>Numer usługi:</td>
-                <td><input type="text" th:field="*{nr_uslugi}" readonly="readonly"></td>
+                <th class="first-column">Numer usługi:</th>
+                <td class="second-column"><input type="text" th:field="*{nr_uslugi}" readonly="readonly"></td>
             </tr>
             <tr>
-                <td>Numer stanowiska:</td>
-                <td><input type="text" th:field="*{nr_stanowiska}"></td>
+                <th class="first-column">Numer stanowiska:</th>
+                <td class="second-column"><input type="text" th:field="*{nr_stanowiska}"></td>
             </tr>
             <tr>
-                <td>Rodzaj usługi:</td>
-                <td>
+                <th class="first-column">Rodzaj usługi:</th>
+                <td class="second-column">
                     <select th:field="*{rodzaj_uslugi}">
                         <option value="Finanse" th:text="Finanse"></option>
                         <option value="Konsultacje" th:text="Konsultacje"></option>
@@ -33,8 +68,8 @@
                 </td>
             </tr>
             <tr>
-                <td>Numer sekretariatu:</td>
-                <td><input type="text" th:field="*{nr_sekretariatu}" readonly="readonly"></td>
+                <th class="first-column">Numer sekretariatu:</th>
+                <td class="second-column"><input type="text" th:field="*{nr_sekretariatu}" readonly="readonly"></td>
             </tr>
             <!--Button save-->
             <tr>
@@ -44,5 +79,11 @@
     </form>
 
 </div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+
 </body>
 </html>

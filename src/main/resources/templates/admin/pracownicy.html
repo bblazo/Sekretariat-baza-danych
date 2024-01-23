@@ -27,6 +27,10 @@
                 </li>
 
                 <li class="nav-item">
+                    <a class="nav-link" th:href="@{/main_admin}">Mój profil</a>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link" th:inline="text" style="color:lightskyblue;">Jesteś zalogowany jako <b
                             style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
                 </li>
