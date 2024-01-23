@@ -31,7 +31,12 @@
       </tr>
       <tr>
         <td>Płeć:</td>
-        <td><input type="text" th:field="*{plec}"></td>
+        <td>
+          <select th:field="*{plec}">
+            <option value="K" th:text="Kobieta"></option>
+            <option value="M" th:text="Mężczyzna"></option>
+          </select>
+        </td>
       </tr>
       <tr>
         <td>Numer telefonu:</td>
