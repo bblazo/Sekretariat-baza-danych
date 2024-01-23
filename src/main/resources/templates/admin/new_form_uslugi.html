@@ -57,11 +57,20 @@
             </tr>
             <tr>
                 <th class="first-column">Rodzaj usługi:</th>
-                <td class="second-column"><input type="text" th:field="*{rodzaj_uslugi}"></td>
+                <td class="second-column">
+                    <select th:field="*{rodzaj_uslugi}">
+                        <option value="Finanse" th:text="Finanse"></option>
+                        <option value="Konsultacje" th:text="Konsultacje"></option>
+                        <option value="Doradztwo" th:text="Doradztwo"></option>
+                        <option value="Inne" th:text="Inne"></option>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <th class="first-column">Numer sekretariatu:</th>
-                <td class="second-column"><input type="text" th:field="*{nr_sekretariatu}"></td>
+                <td class="second-column">
+                    <input type="text" th:field="*{nr_sekretariatu}" readonly="readonly">
+                </td>
             </tr>
             <!--Button save-->
             <tr>
