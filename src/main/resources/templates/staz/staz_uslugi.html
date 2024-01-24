@@ -5,13 +5,13 @@
     <title>Usługi</title>
 
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
-    <link rel="stylesheet" href="css/tables.css">
+    <link th:rel="stylesheet" th:href="@{/css/tables.css}"/>
 
     <style>
-    table {
-      margin: auto;
-    }
-  </style>
+        table {
+            margin: auto;
+        }
+    </style>
 </head>
 <body>
 
@@ -47,35 +47,32 @@
 
 <div id="main-container">
     <div align="center">
-        <h1>Klienci</h1>
+        <h1>Usługi</h1>
 
         <a href="/main_staz/new_form_staz_uslugi"><button>Dodaj nową usługę</button></a>
         <br/><br/>
     </div>
     <div class="container">
-        <table >
+        <table border = "1" cellpadding = "10">
 
             <!--Table header -->
             <thead>
             <tr>
-                <th>Nr klienta</th>
-                <th>Nr telefonu</th>
-                <th>Adres email</th>
-                <th>Data przybycia</th>
+                <th>Nr uslugi</th>
+                <th>Nr stanowiska</th>
+                <th>Rodzaj usługi</th>
                 <th>Nr sekretariatu</th>
-                <th>Nr adresu</th>
+                <th>Działanie</th>
             </tr>
             </thead>
 
             <!-- Table body -->
             <tbody>
-            <tr th:each = "Klienci : ${listKlienci}">
-                <td th:text = "${Klienci.Nr_klienta}">Nr klienta</td>
-                <td th:text = "${Klienci.Nr_telefonu}">Nr telefonu</td>
-                <td th:text = "${Klienci.Adres_email}">Adres email</td>
-                <td th:text = "${Klienci.Data_przybycia}">Data przybycia</td>
-                <td th:text = "${Klienci.Nr_sekretariatu}">Nr sekretariatu</td>
-                <td th:text = "${Klienci.Nr_adresu}">Nr adresu</td>
+            <tr th:each = "Uslugi : ${listUslugi}">
+                <td th:text = "${Uslugi.Nr_uslugi}">Nr uslugi</td>
+                <td th:text = "${Uslugi.Nr_stanowiska}">Nr stanowiska</td>
+                <td th:text = "${Uslugi.Rodzaj_uslugi}">Rodzaj usługi</td>
+                <td th:text = "${Uslugi.Nr_sekretariatu}">Nr sekretariatu</td>
             </tr>
             </tbody>
         </table>
@@ -87,6 +84,7 @@
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 <script th:src="@{/js/script.js}"></script>
+<script th:src="@{/js/inactive.js}"></script>
 
 </body>
 </html>
