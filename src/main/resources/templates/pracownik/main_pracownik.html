@@ -2,17 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Main User Page</title>
-
+    <title>Welcome Page</title>
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
-
+    <link th:href="@{/css/index.css}" rel="stylesheet" />
 </head>
 <body>
-
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-        <a class="navbar-brand" href="/">BDBT Spring Boot Project - Part II</a>
+        <a class="navbar-brand" href="/">SEKRETARIAT</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -22,17 +20,15 @@
             <ul class="navbar-nav ml-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/index}">Home</a>
-                </li>
-
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Main
-                        <span class="sr-only">(current)</span>
-                    </a>
+                    <a class="nav-link" th:href="@{/index}">Strona główna</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">You are logged in as <b
+                    <a class="nav-link" th:href="@{/main_pracownik}">Mój profil</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">Jesteś zalogowany jako <b
                             style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
                 </li>
 
@@ -41,31 +37,50 @@
     </div>
 </nav>
 
-<div class="container">
-    <div class="row">
 
-        <div class="col-md-10 mt-5">
-            <form method="post" th:action="@{/index}">
-                <div class="form-group">
-                    <label style="font-size:30px" th:inline="text">Welcome <a
-                            style="color:lightskyblue; text-transform:capitalize"><b>[[${#httpServletRequest.remoteUser}]]</b></a>
-                        to the main page!</label>
-                    <div style="font-size:20px">If you want to logout, click "Logout" button under this text.</div>
-                </div>
-
-                <button class="btn btn-primary" type="submit" onclick="successfullyLogout()" value="Sign Out">Logout
-                </button>
-            </form>
-        </div>
-
+<div id="main_container">
+    <div id="upper-container" style="margin-bottom: 30px; margin-top: 30px;">
+        <label id="welcome-label">Witaj na swoim profilu <b
+                style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b>!</label>
+        <label id="info-label">Jeśli chcesz zapoznać się z bazą klientów, pracowników, adresów oraz usług kliknij poniżej.</label>
     </div>
+
+    <div id="middle-container">
+        <div class="usluga">Klienci
+            <a th:href="@{/main_pracownik/pracownik_klienci}">
+                <button>Podgląd</button>
+            </a>
+        </div>
+        <div class="usluga">Pracownicy
+            <a th:href="@{/main_pracownik/pracownik_pracownicy}">
+                <button>Podgląd</button>
+            </a>
+        </div>
+        <div class="usluga">Adresy
+            <a th:href="@{/main_pracownik/pracownik_adresy}">
+                <button>Podgląd</button>
+            </a>
+        </div>
+        <div class="usluga">Usługi
+            <a th:href="@{/main_pracownik/pracownik_uslugi}">
+                <button>Podgląd</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div id="log-out-container" style="margin: 20px auto; text-align: center;"  >
+    <label>Jeśli chcesz się wylogować kliknij przycisk wyloguj.</label>
+    <form action="#" th:action="@{/index}" method="post">
+        <button class="btn btn-primary" style="    background-color: red; color: white; padding: 10px 20px; border: none; text-align: center; text-decoration: none; font-size: 16px; cursor: pointer; border-radius: 5px; margin: 15px auto 0; display: block;" type="submit" onclick="successfullyLogout()" value="Sign Out">Wyloguj</button>
+    </form>
 </div>
 
 
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-<script th:src="@{/js/script.js}"></script>
+<script th:src="@{/js/inactive.js}"></script>
 
 </body>
 </html>

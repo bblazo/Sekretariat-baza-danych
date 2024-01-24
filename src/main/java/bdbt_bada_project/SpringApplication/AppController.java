@@ -86,6 +86,16 @@ public class AppController implements WebMvcConfigurer {
             return "redirect:/main_admin/pracownicy";
         }
 
+        //Pracownik
+
+        @RequestMapping("/main_pracownik/pracownik_pracownicy")
+        public String viewHomePagePracownik(Model model) {
+            List<Pracownicy> listPracownicy = daoP.listPracownicy();
+            model.addAttribute("listPracownicy", listPracownicy);
+
+            return "pracownik/pracownik_pracownicy";
+        }
+
         //Klienci
 
         @Autowired
@@ -136,6 +146,81 @@ public class AppController implements WebMvcConfigurer {
             daoK.deleteKlienci(Nr_klienta);
 
             return "redirect:/main_admin/klienci";
+        }
+
+        //Staz
+
+        @RequestMapping("/main_staz/staz_klienci")
+        public String viewHomePageStazKlienci(Model model) {
+            List<Klienci> listKlienci = daoK.listKlienci();
+            model.addAttribute("listKlienci", listKlienci);
+
+            return "staz/staz_klienci";
+        }
+
+        @RequestMapping("/main_staz/new_form_staz_klient")
+        public String showNewFormStazKlienci(Model model) {
+            Klienci klient = new Klienci();
+            model.addAttribute("klient", klient);
+            klient.setNr_sekretariatu(1);
+
+            return "staz/new_form_staz_klient";
+        }
+
+        @RequestMapping(value = "/main_staz/saveStazKlienci", method = RequestMethod.POST)
+        public String saveS(@ModelAttribute("klient") Klienci klienci){
+            daoK.saveKlienci(klienci);
+
+            return "redirect:/main_staz/staz_klienci";
+        }
+
+        //Pracownik
+
+        @RequestMapping("/main_pracownik/pracownik_klienci")
+        public String viewHomePagePracownikKlienci(Model model) {
+            List<Klienci> listKlienci = daoK.listKlienci();
+            model.addAttribute("listKlienci", listKlienci);
+
+            return "pracownik/pracownik_klienci";
+        }
+
+        @RequestMapping("/main_pracownik/new_form_pracownik_klient")
+        public String showNewFormPracownikKlienci(Model model) {
+            Klienci klient = new Klienci();
+            model.addAttribute("klient", klient);
+            klient.setNr_sekretariatu(1);
+
+            return "pracownik/new_form_pracownik_klient";
+        }
+
+        @RequestMapping(value = "/main_pracownik/savePracownikKlienci", method = RequestMethod.POST)
+        public String saveP(@ModelAttribute("klient") Klienci klienci){
+            daoK.saveKlienci(klienci);
+
+            return "redirect:/main_pracownik/pracownik_klienci";
+        }
+
+        @RequestMapping("/main_pracownik/pracownik_klienci_edit/{Nr_klienta}")
+        public ModelAndView showEditFormPracownikKlienci(@PathVariable(name = "Nr_klienta") int Nr_klienta) {
+            ModelAndView mav = new ModelAndView("pracownik/edit_form_pracownik_klienci");
+            Klienci klienci = daoK.getKlienci(Nr_klienta);
+            mav.addObject("klienci", klienci);
+
+            return mav;
+        }
+
+        @RequestMapping(value = "/main_pracownik/updatePracownikKlienci", method = RequestMethod.POST)
+        public String updateP(@ModelAttribute("klienci") Klienci klienci) {
+            daoK.updateKlienci(klienci);
+
+            return "redirect:/main_pracownik/pracownik_klienci";
+        }
+
+        @RequestMapping("/main_pracownik/pracownik_klienci_delete/{Nr_klienta}")
+        public String deleteP(@PathVariable(name = "Nr_klienta") int Nr_klienta, @ModelAttribute("klient") Klienci klienci) {
+            daoK.deleteKlienci(Nr_klienta);
+
+            return "redirect:/main_pracownik/pracownik_klienci";
         }
 
         //Uslugi
@@ -235,6 +320,83 @@ public class AppController implements WebMvcConfigurer {
             return "redirect:/main_user";
         }
 
+        //Staz
+
+        @RequestMapping("/main_staz/staz_uslugi")
+        public String viewHomePageStazUslugi(Model model) {
+            List<Uslugi> listUslugi = daoU.listUslugi();
+            model.addAttribute("listUslugi", listUslugi);
+
+            return "staz/uslugi";
+        }
+
+        @RequestMapping("/main_staz/new_form_staz_uslugi")
+        public String showNewFormStazUslugi(Model model) {
+            Uslugi usluga = new Uslugi();
+            model.addAttribute("usluga", usluga);
+            usluga.setNr_sekretariatu(1);
+
+            return "staz/new_form_staz_uslugi";
+        }
+
+        @RequestMapping(value = "/main_staz/saveStazUslugi", method = RequestMethod.POST)
+        public String saveS(@ModelAttribute("usluga") Uslugi uslugi){
+            daoU.saveUslugi(uslugi);
+
+            return "redirect:/main_staz/staz_uslugi";
+        }
+
+        //Pracownik
+
+        @RequestMapping("/main_pracownik/pracownik_uslugi")
+        public String viewHomePagePracownikUslugi(Model model) {
+            List<Uslugi> listUslugi = daoU.listUslugi();
+            model.addAttribute("listUslugi", listUslugi);
+
+            return "pracownik/pracownik_uslugi";
+        }
+
+        @RequestMapping("/main_pracownik/new_form_pracownik_uslugi")
+        public String showNewFormPracownikUslugi(Model model) {
+            Uslugi usluga = new Uslugi();
+            model.addAttribute("usluga", usluga);
+            usluga.setNr_sekretariatu(1);
+
+            return "pracownik/new_form_pracownik_uslugi";
+        }
+
+        @RequestMapping(value = "/main_pracownik/savePracownikUslugi", method = RequestMethod.POST)
+        public String saveP(@ModelAttribute("usluga") Uslugi uslugi){
+            daoU.saveUslugi(uslugi);
+
+            return "redirect:/main_pracownik/pracownik_uslugi";
+        }
+
+        @RequestMapping("/main_pracownik/pracownik_uslugi_edit/{Nr_uslugi}")
+        public ModelAndView showEditFormPracownikUslugi(@PathVariable(name = "Nr_uslugi") int Nr_uslugi) {
+            ModelAndView mav = new ModelAndView("pracownik/edit_form_pracownik_uslugi");
+            Uslugi uslugi = daoU.getUslugi(Nr_uslugi);
+            mav.addObject("uslugi", uslugi);
+
+            return mav;
+        }
+
+
+        @RequestMapping(value = "/main_pracownik/updatePracownikUslugi", method = RequestMethod.POST)
+        public String updateP(@ModelAttribute("uslugi") Uslugi uslugi) {
+            daoU.updateUslugi(uslugi);
+
+            return "redirect:/pracownik_uslugi";
+        }
+
+        @RequestMapping("/main_pracownik/pracownik_uslugi_delete/{Nr_uslugi}")
+        public String deleteP(@PathVariable(name = "Nr_uslugi") int Nr_uslugi, @ModelAttribute("usluga") Uslugi uslugi) {
+            daoU.deleteUslugi(Nr_uslugi);
+
+            return "redirect:/pracownik_uslugi";
+        }
+
+
         //Adresy
 
         @Autowired
@@ -257,7 +419,7 @@ public class AppController implements WebMvcConfigurer {
             return "admin/new_form_adresy";
         }
 
-        @RequestMapping(value = "/saveAdresy", method = RequestMethod.POST)
+        @RequestMapping(value = "/main_admin/saveAdresy", method = RequestMethod.POST)
         public String save(@ModelAttribute("adres") Adresy adresy){
             daoA.saveAdresy(adresy);
 
@@ -285,6 +447,79 @@ public class AppController implements WebMvcConfigurer {
             daoA.deleteAdresy(Nr_adresu);
 
             return "redirect:/main_admin/adresy";
+        }
+
+        //Staz
+
+        @RequestMapping("/main_staz/staz_adresy")
+        public String viewHomePageStazAdresy(Model model) {
+            List<Adresy> listAdresy = daoA.listAdresy();
+            model.addAttribute("listAdresy", listAdresy);
+
+            return "staz/staz_adresy";
+        }
+
+        @RequestMapping("/main_staz/new_form_staz_adresy")
+        public String showNewFormStazAdresy(Model model) {
+            Adresy adres = new Adresy();
+            model.addAttribute("adres", adres);
+
+            return "staz/new_form_staz_adresy";
+        }
+
+        @RequestMapping(value = "/main_staz/saveStazAdresy", method = RequestMethod.POST)
+        public String saveS(@ModelAttribute("adres") Adresy adresy){
+            daoA.saveAdresy(adresy);
+
+            return "redirect:/main_staz/staz_adresy";
+        }
+
+        //Pracownik
+
+        @RequestMapping("/main_pracownik/pracownik_adresy")
+        public String viewHomePagePracownikAdresy(Model model) {
+            List<Adresy> listAdresy = daoA.listAdresy();
+            model.addAttribute("listAdresy", listAdresy);
+
+            return "pracownik/pracownik_adresy";
+        }
+
+        @RequestMapping("/main_pracownik/new_form_pracownik_adresy")
+        public String showNewFormPracownikAdresy(Model model) {
+            Adresy adres = new Adresy();
+            model.addAttribute("adres", adres);
+
+            return "pracownik/new_form_pracownik_adresy";
+        }
+
+        @RequestMapping(value = "/main_pracownik/savePracownikAdresy", method = RequestMethod.POST)
+        public String saveP(@ModelAttribute("adres") Adresy adresy){
+            daoA.saveAdresy(adresy);
+
+            return "redirect:/main_pracownik/pracownik_adresy";
+        }
+
+        @RequestMapping("/main_pracownik/pracownik_adresy_edit/{Nr_adresu}")
+        public ModelAndView showEditFormPracownikAdresy(@PathVariable(name = "Nr_adresu") int Nr_adresu) {
+            ModelAndView mav = new ModelAndView("pracownik/edit_form_pracownik_adresy");
+            Adresy adresy = daoA.getAdresy(Nr_adresu);
+            mav.addObject("adresy", adresy);
+
+            return mav;
+        }
+
+        @RequestMapping(value = "/main_pracownik/updatePracownikAdresy", method = RequestMethod.POST)
+        public String updateP(@ModelAttribute("adresy") Adresy adresy) {
+            daoA.updateAdresy(adresy);
+
+            return "redirect:/main_pracownik/pracownik_adresy";
+        }
+
+        @RequestMapping("/main_pracownik/pracownik_adresy_delete/{Nr_adresu}")
+        public String deleteP(@PathVariable(name = "Nr_adresu") int Nr_adresu, @ModelAttribute("adres") Adresy adresy) {
+            daoA.deleteAdresy(Nr_adresu);
+
+            return "redirect:/main_pracownik/pracownik_adresy";
         }
 
         //Wynagrodzenia
@@ -356,7 +591,7 @@ public class AppController implements WebMvcConfigurer {
             }
             else if
             (request.isUserInRole
-                            ("STAZ")) {
+                            ("STAŻYSTA")) {
                 return "redirect:/main_staz";
             }
             else if

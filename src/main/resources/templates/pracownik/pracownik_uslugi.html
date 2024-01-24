@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Uslugi</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{/css/tables.css}"/>
+
+    <style>
+        table {
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">SEKRETARIAT - USŁUGI</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/index}">Strona główna</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/main_pracownik}">Mój profil</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">Jesteś zalogowany jako <b
+                            style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="main-container">
+    <div align="center">
+        <h1>Usługi</h1>
+
+        <a href="/main_pracownik/new_form_pracownik_uslugi"><button>Dodaj nową usługę</button></a>
+        <br/><br/>
+    </div>
+    <div class="container">
+        <table border = "1" cellpadding = "10">
+
+            <!--Table header -->
+            <thead>
+            <tr>
+                <th>Nr uslugi</th>
+                <th>Nr stanowiska</th>
+                <th>Rodzaj usługi</th>
+                <th>Nr sekretariatu</th>
+                <th>Działanie</th>
+            </tr>
+            </thead>
+
+            <!-- Table body -->
+            <tbody>
+            <tr th:each = "Uslugi : ${listUslugi}">
+                <td th:text = "${Uslugi.Nr_uslugi}">Nr uslugi</td>
+                <td th:text = "${Uslugi.Nr_stanowiska}">Nr stanowiska</td>
+                <td th:text = "${Uslugi.Rodzaj_uslugi}">Rodzaj usługi</td>
+                <td th:text = "${Uslugi.Nr_sekretariatu}">Nr sekretariatu</td>
+                <td>
+                    <a th:href="@{'/main_pracownik/pracownik_uslugi_edit/' + ${Uslugi.Nr_uslugi}}"style="color: #EE6821;">Edytuj</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/main_pracownik/pracownik_uslugi_delete/' + ${Uslugi.Nr_uslugi}}" onclick="return confirm('Czy na pewno chcesz usunąć dany wpis?');" style="color: #EE6821;">Usuń</a>
+
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+<script th:src="@{/js/inactive.js}"></script>
+
+</body>
+</html>
