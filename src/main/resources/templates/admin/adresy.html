@@ -5,7 +5,7 @@
     <title>Adresy</title>
 
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
-    <link th:rel="stylesheet" th:href="@{css/tables.css}"/>
+    <link th:rel="stylesheet" th:href="@{/css/tables.css}"/>
 
     <style>
         table {
@@ -79,7 +79,7 @@
                     <td>
                         <a th:href="@{'/main_admin/adresy_edit/' + ${Adresy.Nr_adresu}}"style="color: #EE6821;">Edytuj</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a th:href="@{'/main_admin/adresy_delete/' + ${Adresy.Nr_adresu}}"style="color: #EE6821;">Usuń</a>
+                        <a th:href="@{'/main_admin/adresy_delete/' + ${Adresy.Nr_adresu}}"onclick="return confirm('Czy na pewno chcesz usunąć dany wpis?');" style="color: #EE6821;">Usuń</a>
                     </td>
                 </tr>
             </tbody>
@@ -91,6 +91,7 @@
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 <script th:src="@{/js/script.js}"></script>
+<script th:src="@{/js/inactive.js}"></script>
 
 </body>
 </html>

@@ -1,9 +1,11 @@
+body {
+    background-color: #FCF7EE;
+}
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-    margin-left: -100px;
+    margin: 20px auto;
     overflow-x: auto;
     overflow-y: auto;
     max-width: 100%;

@@ -1,17 +1,20 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8"/>
     <title>Welcome Page</title>
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
     <link th:href="@{/css/index.css}" rel="stylesheet" />
+    <link th:rel="stylesheet" th:href="@{/css/dy_calendar.css}"/>
+
 </head>
+
 <body>
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-        <a class="navbar-brand" href="/">SEKRETARIAT<img th:src="@{/images/sekretariat.png}" alt="Sekretariat logo" width="30" height="30">
-        </a>
+        <a class="navbar-brand" href="/">SEKRETARIAT</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +43,7 @@
     <div id="upper-container">
         <label id="welcome-label">Witaj na stronie sekretariatu!</label>
         <label id="login-label">Jeśli chcesz się zalogować, kliknij <a th:href="@{/main}" style="color: #EE6821;"><b>tutaj</b></a> lub w prawym górnym rogu</label>
-        <label id="info-label">Zapoznaj się ze świadczonymi usługami wybierając poniżej.</label>
+        <label id="info-label">Zapoznaj się ze świadczonymi usługami poniżej.</label>
     </div>
 
     <div class="usluga-container">
@@ -49,7 +52,7 @@
         </div>
         <div class="usluga-div-info">
             <label>Finanse</label>
-            <label>Pomoc w zakresie zarządzania rachunkowością, przygotowywania raportów finansowych, monitorowania budżetów oraz obsługi transakcji finansowych.</label>
+            <label style="font-weight: normal;">Pomoc w zakresie zarządzania rachunkowością, przygotowywania raportów finansowych, monitorowania budżetów oraz obsługi transakcji finansowych.</label>
         </div>
     </div>
 
@@ -59,7 +62,7 @@
         </div>
         <div class="usluga-div-info">
             <label>Doradztwo</label>
-            <label>Pomoc w zakresie organizacji pracy biura, optymalizacji procesów biznesowych oraz implementacji nowoczesnych technologii w celu usprawnienia funkcjonowania firmy.
+            <label style="font-weight: normal;">Pomoc w zakresie organizacji pracy biura, optymalizacji procesów biznesowych oraz implementacji nowoczesnych technologii w celu usprawnienia funkcjonowania firmy.
                 Pomoc w zarządzaniu dokumentacją oraz przestrzeganiu przepisów prawa.</label>
         </div>
     </div>
@@ -70,7 +73,7 @@
         </div>
         <div class="usluga-div-info">
             <label>Konsultacje</label>
-            <label>Usługi związane z planowaniem strategicznym, rozwojem firmy, zarządzaniem personelem oraz analizą rynkową. Konsultacje te mają na celu wspieranie decyzji strategicznych oraz efektywnego rozwoju organizacji.
+            <label style="font-weight: normal;">Usługi związane z planowaniem strategicznym, rozwojem firmy, zarządzaniem personelem oraz analizą rynkową. Konsultacje te mają na celu wspieranie decyzji strategicznych oraz efektywnego rozwoju organizacji.
             </label>
         </div>
     </div>
@@ -81,29 +84,43 @@
         </div>
         <div class="usluga-div-info">
             <label>Inne</label>
-            <label>Obsługa korespondencji, organizacja spotkań, zarządzanie terminarzem czy rezerwacja podróży służbowych.</label>
+            <label style="font-weight: normal;">Obsługa korespondencji, organizacja spotkań, zarządzanie terminarzem czy rezerwacja podróży służbowych.</label>
         </div>
     </div>
 
-
+    <div class="usluga">
+        <a th:href="@{/login}">
+            <button>Skorzystaj z usługi</button>
+        </a>
+    </div>
 </div>
 
 <div id="contact-container">
     <div class="contact">
         <label style="font-weight: 500;">Kontakt: </label>
-        <label>adres e-mail: </label>
-        <label>lokalizacja: </label>
-        <label>numer kontaktowy: </label>
+        <label>Adres e-mail: sekret@gmail.com</label>
+        <label>Lokalizacja: Warszawa ul. Nowowiejska 19 00-271 Warszawa</label>
+        <label>Numer kontaktowy: 123 456 789</label>
     </div>
 </div>
 
-<div id="side-container">
-    <label>Tu będzie kalendarz!!</label>
+<div class="calendar-container">
+    <div id="sample-calendar" class="dycalendar-container round-edge shadow-default" style="float:right; margin-right:80px; margin-bottom: 50px;"></div>
 </div>
+
+<script th:src="@{/js/dy_calendar.js}"></script>
+<script>
+    dycalendar.draw({
+        target: '#sample-calendar',
+        type: 'month'
+    });
+</script>
+
 
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/inactive.js}"></script>
 
 </body>
 </html>

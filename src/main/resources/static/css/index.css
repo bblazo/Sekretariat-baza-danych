@@ -46,7 +46,7 @@ body {
     text-align: center;
 }
 
-#middle-container .usluga button {
+#main_container .usluga button {
     background-color: #F7A543;
     color: white;
     padding: 10px 20px;
@@ -57,20 +57,19 @@ body {
     cursor: pointer;
     border-radius: 5px;
     display: block;
-    margin-top: 25px;
+    margin: 25px auto 0;
 }
 
 #contact-container {
     display: block;
     padding: 10px;
     margin-top: 15px;
-    margin-left: 192px;
+    margin-left: 80px;
     float: left;
 
 }
 #contact-container label {
-    border: 2px solid #ccc;
-    margin-top: 15px;
+
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
@@ -85,4 +84,28 @@ body {
     height: 300px;
     padding: 10px;
     background-color: #d0d0d0;
+    margin-right: 80px;
+    margin-bottom: 20px;
+}
+
+.usluga-container {
+    display: flex;
+    align-items: center;
+    margin: 20px 80px;
+    border-bottom: 1px solid #cccccc;
+
+ }
+
+.usluga-photo {
+    margin-right: 30px;
+}
+
+.usluga-div-info {
+    display: flex;
+    flex-direction: column;
+}
+
+
+label {
+    font-weight: bold;
 }

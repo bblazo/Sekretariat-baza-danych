@@ -6,7 +6,7 @@
     <title>Nowe wynagrodzenie</title>
 
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
-    <link th:rel="stylesheet" th:href="@{css/new_edit_forms.css}"/>
+    <link th:rel="stylesheet" th:href="@{/css/new_edit_forms.css}"/>
 
 </head>
 <body>
@@ -58,6 +58,7 @@
             <tr>
                 <th class="first-column">Kwota brutto:</th>
                 <td class="second-column"><input type="text" th:field="*{kwota_brutto}"></td>
+
             </tr>
             <tr>
                 <th class="first-column">Kwota netto:</th>
@@ -80,6 +81,7 @@
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 <script th:src="@{/js/script.js}"></script>
+<script th:src="@{/js/inactive.js}"></script>
 
 </body>
 </html>

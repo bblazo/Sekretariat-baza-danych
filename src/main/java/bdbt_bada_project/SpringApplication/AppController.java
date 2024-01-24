@@ -60,7 +60,7 @@ public class AppController implements WebMvcConfigurer {
         public String save(@ModelAttribute("pracownik") Pracownicy pracownicy){
             daoP.savePracownicy(pracownicy);
 
-            return "redirect:/pracownicy";
+            return "redirect:/main_admin/pracownicy";
         }
 
         @RequestMapping("/main_admin/edit/{Nr_pracownika}")
@@ -76,14 +76,14 @@ public class AppController implements WebMvcConfigurer {
         public String update(@ModelAttribute("pracownicy") Pracownicy pracownicy) {
             daoP.updatePracownicy(pracownicy);
 
-            return "redirect:/pracownicy";
+            return "redirect:/main_admin/pracownicy";
         }
 
         @RequestMapping("/main_admin/delete/{Nr_pracownika}")
         public String delete(@PathVariable(name = "Nr_pracownika") int Nr_pracownika) {
             daoP.deletePracownicy(Nr_pracownika);
 
-            return "redirect:/pracownicy";
+            return "redirect:/main_admin/pracownicy";
         }
 
         //Klienci
@@ -112,7 +112,7 @@ public class AppController implements WebMvcConfigurer {
         public String save(@ModelAttribute("klient") Klienci klienci){
             daoK.saveKlienci(klienci);
 
-            return "redirect:/klienci";
+            return "redirect:/main_admin/klienci";
         }
 
         @RequestMapping("/main_admin/klienci_edit/{Nr_klienta}")
@@ -128,16 +128,15 @@ public class AppController implements WebMvcConfigurer {
         public String update(@ModelAttribute("klienci") Klienci klienci) {
             daoK.updateKlienci(klienci);
 
-            return "redirect:/klienci";
+            return "redirect:/main_admin/klienci";
         }
 
         @RequestMapping("/main_admin/klienci_delete/{Nr_klienta}")
         public String delete(@PathVariable(name = "Nr_klienta") int Nr_klienta, @ModelAttribute("klient") Klienci klienci) {
             daoK.deleteKlienci(Nr_klienta);
 
-            return "redirect:/klienci";
+            return "redirect:/main_admin/klienci";
         }
-
 
         //Uslugi
 
@@ -166,7 +165,7 @@ public class AppController implements WebMvcConfigurer {
         public String save(@ModelAttribute("usluga") Uslugi uslugi){
             daoU.saveUslugi(uslugi);
 
-            return "redirect:/uslugi";
+            return "redirect:/main_admin/uslugi";
         }
 
         @RequestMapping("/main_admin/uslugi_edit/{Nr_uslugi}")
@@ -183,14 +182,14 @@ public class AppController implements WebMvcConfigurer {
         public String update(@ModelAttribute("uslugi") Uslugi uslugi) {
             daoU.updateUslugi(uslugi);
 
-            return "redirect:/uslugi";
+            return "redirect:/main_admin/uslugi";
         }
 
         @RequestMapping("/main_admin/uslugi_delete/{Nr_uslugi}")
         public String delete(@PathVariable(name = "Nr_uslugi") int Nr_uslugi, @ModelAttribute("klient") Uslugi uslugi) {
             daoU.deleteUslugi(Nr_uslugi);
 
-            return "redirect:/uslugi";
+            return "redirect:/main_admin/uslugi";
         }
 
         @RequestMapping("/main_user/new_form_usluga_inne")
@@ -278,14 +277,14 @@ public class AppController implements WebMvcConfigurer {
         public String update(@ModelAttribute("adresy") Adresy adresy) {
             daoA.updateAdresy(adresy);
 
-            return "redirect:/adresy";
+            return "redirect:/main_admin/adresy";
         }
 
         @RequestMapping("/main_admin/adresy_delete/{Nr_adresu}")
         public String delete(@PathVariable(name = "Nr_adresu") int Nr_adresu, @ModelAttribute("adres") Adresy adresy) {
             daoA.deleteAdresy(Nr_adresu);
 
-            return "redirect:/adresy";
+            return "redirect:/main_admin/adresy";
         }
 
         //Wynagrodzenia
@@ -314,7 +313,7 @@ public class AppController implements WebMvcConfigurer {
         public String save(@ModelAttribute("wynagrodzenie") Wynagrodzenia wynagrodzenia){
             daoW.saveWynagrodzenia(wynagrodzenia);
 
-            return "redirect:/wynagrodzenia";
+            return "redirect:/main_admin/wynagrodzenia";
         }
 
         @RequestMapping("/main_admin/wynagrodzenia_edit/{Nr_wynagrodzenia}")
@@ -330,14 +329,14 @@ public class AppController implements WebMvcConfigurer {
         public String update(@ModelAttribute("wynagrodzenia") Wynagrodzenia wynagrodzenia) {
             daoW.updateWynagrodzenia(wynagrodzenia);
 
-            return "redirect:/wynagrodzenia";
+            return "redirect:/main_admin/wynagrodzenia";
         }
 
         @RequestMapping("/main_admin/wynagrodzenia_delete/{Nr_wynagrodzenia}")
         public String delete(@PathVariable(name = "Nr_wynagrodzenia") int Nr_wynagrodzenia, @ModelAttribute("wynagrodzenie") Wynagrodzenia wynagrodzenia) {
             daoW.deleteWynagrodzenia(Nr_wynagrodzenia);
 
-            return "redirect:/wynagrodzenia";
+            return "redirect:/main_admin/wynagrodzenia";
         }
 
         @RequestMapping

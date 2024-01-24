@@ -5,7 +5,7 @@
     <title>Pracownicy</title>
 
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
-    <link th:rel="stylesheet" th:href="@{css/tables.css}"/>
+    <link rel="stylesheet" th:href="@{/css/tables.css}">
 
 </head>
 <body>
@@ -43,11 +43,11 @@
     <div align="center">
         <h1>Pracownicy</h1>
 
-        <a th:href="@{/new_form_pracownik}"><button>Dodaj nowego pracownika</button></a>
+        <a th:href="@{/main_admin/new_form_pracownik}"><button>Dodaj nowego pracownika</button></a>
         <br/><br/>
     </div>
     <div class="container">
-        <table style="width: 80%;">
+        <table style="width: 80%; margin-left:-30px;">
 
             <!--Table header -->
             <thead>
@@ -92,7 +92,7 @@
                     <td>
                         <a th:href="@{'/main_admin/edit/' + ${Pracownicy.Nr_pracownika}}"style="color: #EE6821;">Edytuj</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a th:href="@{'/main_admin/delete/' + ${Pracownicy.Nr_pracownika}}"style="color: #EE6821;">Usuń</a>
+                        <a th:href="@{'/main_admin/delete/' + ${Pracownicy.Nr_pracownika}}" onclick="return confirm('Czy na pewno chcesz usunąć dany wpis?');" style="color: #EE6821;">Usuń</a>
                     </td>
 
                 </tr>
@@ -106,6 +106,7 @@
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 <script th:src="@{/js/script.js}"></script>
+<script th:src="@{/js/inactive.js}"></script>
 
 </body>
 </html>

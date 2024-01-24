@@ -4,11 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Nowa usługa</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{/css/new_edit_forms.css}"/>
+
 </head>
-<body>,
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">SEKRETARIAT</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/index}">Strona główna</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/main_admin}">Mój profil</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">Jesteś zalogowany jako <b
+                            style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <div align="center">
     <!-- Page header -->
-    <h1>Dodaj nową usługę</h1>
+    <h1 style="margin-top: 20px;">Dodaj nową usługę</h1>
 
     <!-- End line/ new line-->
     <br/>
@@ -16,20 +51,20 @@
         <table border = "1" cellpadding="10">
             <!--  Table row -->
             <tr>
-                <td>Numer usługi:</td>
+                <th class="first-column">Numer usługi:</th>
                 <td><input type="text" th:field="*{nr_uslugi}"></td>
             </tr>
             <tr>
-                <td>Numer stanowiska:</td>
-                <td><input type="text" th:field="*{nr_stanowiska}"></td>
+                <th class="first-column">Numer stanowiska:</th>
+                <td class="second-column"><input type="text" th:field="*{nr_stanowiska}"></td>
             </tr>
             <tr>
-                <td>Rodzaj usługi:</td>
-                <td><input type="text" th:field="*{rodzaj_uslugi}" readonly="readonly"></td>
+                <th class="first-column">Rodzaj usługi:</th>
+                <td class="second-column"><input type="text" th:field="*{rodzaj_uslugi}" readonly="readonly"></td>
             </tr>
             <tr>
-                <td>Numer sekretariatu:</td>
-                <td><input type="text" th:field="*{nr_sekretariatu}"></td>
+                <th class="first-column">Numer sekretariatu:</th>
+                <td class="second-column"><input type="text" th:field="*{nr_sekretariatu}"></td>
             </tr>
             <!--Button save-->
             <tr>
@@ -39,5 +74,11 @@
     </form>
 
 </div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+
 </body>
 </html>
