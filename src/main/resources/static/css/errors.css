@@ -1,0 +1,46 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #FCF7EE;
+    color: black;
+}
+
+.container {
+    margin-top: 50px;
+    width: 100%
+}
+
+.error-container {
+    text-align: left;
+}
+
+.error-number {
+    font-size: 50px;
+    font-weight: bold;
+    color: #ff9800; /* Light Orange */
+}
+
+.error-message {
+    font-size: 24px;
+}
+
+.error-description {
+    margin-top: 20px;
+    font-size: 25px;
+}
+
+.btn-back {
+    background-color: #F7A543;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: block;
+    margin-top: 25px;
+    outline: none;
+
+}
+
