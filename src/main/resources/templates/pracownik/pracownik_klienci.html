@@ -5,7 +5,7 @@
     <title>Klienci</title>
 
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
-    <link th:rel="stylesheet" th:href="@{css/tables.css}">
+    <link th:rel="stylesheet" th:href="@{/css/tables.css}"/>
 
     <style>
     table {
@@ -80,7 +80,7 @@
                 <td>
                     <a th:href="@{'/main_pracownik/pracownik_klienci_edit/' + ${Klienci.Nr_klienta}}"style="color: #EE6821;">Edytuj</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a th:href="@{'/main_pracownik/pracownik_klienci_delete/' + ${Klienci.Nr_klienta}}"style="color: #EE6821;">Usuń</a>
+                    <a th:href="@{'/main_pracownik/pracownik_klienci_delete/' + ${Klienci.Nr_klienta}}" onclick="return confirm('Czy na pewno chcesz usunąć dany wpis?');" style="color: #EE6821;">Usuń</a>
                 </td>
 
             </tr>
