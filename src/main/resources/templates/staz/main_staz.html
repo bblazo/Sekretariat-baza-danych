@@ -45,7 +45,7 @@
         <label id="info-label">Jeśli chcesz zapoznać się z bazą klientów, adresów oraz usług kliknij poniżej.</label>
     </div>
 
-    <div id="middle-container">
+    <div id="middle-container" style="margin-left: 250px;">
         <div class="usluga">Klienci
             <a th:href="@{/main_staz/staz_klienci}">
                 <button>Podgląd</button>
@@ -62,14 +62,15 @@
             </a>
         </div>
     </div>
+    <div id="log-out-container" style=" margin-top: 70px; margin-left: -30px; justify-content:center; float: none; display: block;  text-align: center;"  >
+        <form action="#" th:action="@{/index}" method="post">
+            <button class="btn btn-primary" style="    background-color: red; color: white; padding: 10px 20px; border: none; text-align: center; text-decoration: none; font-size: 16px; cursor: pointer; border-radius: 5px; margin: 15px auto 0; display: block;" type="submit" onclick="successfullyLogout()" value="Sign Out">Wyloguj</button>
+        </form>
+    </div>
 </div>
 
-<div id="log-out-container" style="margin: 20px auto; text-align: center;"  >
-    <label>Jeśli chcesz się wylogować kliknij przycisk wyloguj.</label>
-    <form action="#" th:action="@{/index}" method="post">
-        <button class="btn btn-primary" style="    background-color: red; color: white; padding: 10px 20px; border: none; text-align: center; text-decoration: none; font-size: 16px; cursor: pointer; border-radius: 5px; margin: 15px auto 0; display: block;" type="submit" onclick="successfullyLogout()" value="Sign Out">Wyloguj</button>
-    </form>
-</div>
+
+
 
 
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>

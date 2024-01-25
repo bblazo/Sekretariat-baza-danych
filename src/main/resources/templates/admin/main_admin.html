@@ -6,6 +6,8 @@
 
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
     <link th:href="@{/css/main_admin.css}" th:rel="stylesheet" />
+    <link th:rel="stylesheet" th:href="@{/css/dy_calendar.css}"/>
+
 </head>
 <body>
 
@@ -84,7 +86,7 @@
             </a>
         </div>
     </div>
-    <div id="log-out-container">
+    <div id="log-out-container" >
         <label>Jeśli chcesz się wylogować kliknij przycisk wyloguj.</label>
         <form action="#" th:action="@{/index}" method="post">
             <button class="btn btn-primary" type="submit" onclick="successfullyLogout()" value="Sign Out">Wyloguj</button>
@@ -92,6 +94,18 @@
     </div>
 
 </div>
+
+<div class="calendar-container">
+    <div id="sample-calendar" class="dycalendar-container round-edge shadow-default" style="float:right; margin-right:80px; margin-bottom: 50px;"></div>
+</div>
+
+<script th:src="@{/js/dy_calendar.js}"></script>
+<script>
+    dycalendar.draw({
+        target: '#sample-calendar',
+        type: 'month'
+    });
+</script>
 
 
 

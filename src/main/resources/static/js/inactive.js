@@ -1,5 +1,5 @@
 var inactivityTimeout;
-var inactivityDuration = 50000; // 5 minutes in milliseconds (adjust as needed)
+var inactivityDuration = 100000; // 5 minutes in milliseconds (adjust as needed)
 
 function resetInactivityTimeout() {
     clearTimeout(inactivityTimeout);

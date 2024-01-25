@@ -42,6 +42,7 @@
 
 
 <div id="main-container" align="center">
+
     <!-- Page header -->
     <h1 style="margin-top: 20px;">Dodaj nowego pracownika</h1>
 
@@ -72,7 +73,9 @@
             </tr>
             <tr>
                 <th class="first-column">Numer telefonu:</th>
-                <td class="second-column"><input type="text" th:field="*{nr_telefonu}"></td>
+                <td class="second-column"><input type="text" id="nr_tel_Input" name = "nr_telefonu" oninput="validate_nr_tel_type()" >
+                    <div id="error" style="color: red;"></div>
+                </td>
             </tr>
             <tr>
                 <th class="first-column">Data urodzenia:</th>
@@ -84,7 +87,8 @@
             </tr>
             <tr>
                 <th class="first-column">PESEL:</th>
-                <td class="second-column"><input type="text" th:field="*{PESEL}"></td>
+                <td class="second-column"><input type="text" id="peselInput" name="PESEL" oninput="validatePESELtype() ">
+                    <div id="errorMessage" style="color: red;"></div></td>
             </tr>
             <tr>
                 <th class="first-column">Data zatrudnienia:</th>
@@ -112,14 +116,14 @@
             </tr>
             <!-- Button save -->
             <tr>
-                <td colspan="2" style="border: none;"><button type="submit">Zapisz</button></td>
+                <td colspan="2" style="border: none;"><button id="submitButton" type="submit">Zapisz</button></td>
             </tr>
         </table>
     </form>
 
 </div>
 
-
+<script th:src="@{/https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js}"></script>
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>

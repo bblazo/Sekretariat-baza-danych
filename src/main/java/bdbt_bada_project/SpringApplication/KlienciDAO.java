@@ -54,4 +54,12 @@ public class KlienciDAO {
         jdbcTemplate.update(sql, Nr_klienta);
     }
 
+    public List<Klienci> listWithLogin(int login){
+        Object[] args = {8};
+        System.out.println(args[0]);
+        String sql = "SELECT * FROM KLIENCI WHERE NR_KLIENTA = " + "'" + args[0] + "'";
+        List<Klienci> listKlient = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Klienci.class));
+        return listKlient;
+    }
+
 }

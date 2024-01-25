@@ -5,6 +5,8 @@
     <title>Welcome Page</title>
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
     <link th:href="@{/css/index.css}" th:rel="stylesheet" />
+    <link th:href="@{/css/tables.css}" rel="stylesheet" />
+
 </head>
 <body>
 <!-- Navigation -->
@@ -47,29 +49,61 @@
 
     <div id="middle-container">
         <div class="usluga">Finanse
-            <a th:href="@{/main_user/new_form_usluga_finanse}">
+            <a th:href="@{/main_user/add/8}">
                 <button>Skorzystaj</button>
             </a>
         </div>
         <div class="usluga">Konsultacje
-            <a th:href="@{/main_user/new_form_usluga_konsultacje}">
+            <a th:href="@{/main_user/add/9}">
                 <button>Skorzystaj</button>
             </a>
         </div>
         <div class="usluga">Doradztwo
-            <a th:href="@{/main_user/new_form_usluga_doradztwo}">
+            <a th:href="@{/main_user/add/7}">
                 <button>Skorzystaj</button>
             </a>
         </div>
         <div class="usluga">Inne
-            <a th:href="@{/main_user/new_form_usluga_inne}">
+            <a th:href="@{/main_user/add/6}">
                 <button>Skorzystaj</button>
             </a>
         </div>
     </div>
+
+    <div class="container">
+        <table >
+
+            <!--Table header -->
+            <thead>
+            <tr>
+                <th>Nr biletu</th>
+                <th>Nr uslugi</th>
+                <th>Nr klienta</th>
+                <th>Data przybycia</th>
+            </tr>
+            </thead>
+
+            <!-- Table body -->
+            <tbody>
+            <tr th:each = "Bilety : ${bilet}">
+                <td th:text = "${Bilety.Nr_biletu}">Nr biletu</td>
+                <td th:text = "${Bilety.Nr_uslugi}">Nr uslugi</td>
+                <td th:text = "${Bilety.Nr_klienta}">Nr klienta</td>
+                <td th:text = "${Bilety.Data_przybycia}">Data przybycia</td>
+                <td>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/main_user/deleteBilety/' + ${Bilety.Nr_bilety}}" onclick="return confirm('Czy na pewno chcesz usunąć dany wpis?');" style="color: #EE6821;">Usuń</a>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
 </div>
 
-<div id="log-out-container" style="margin: 20px auto; text-align: center;"  >
+<div id="log-out-container" style=" margin: 20px auto; text-align: center;"  >
     <label>Jeśli chcesz się wylogować kliknij przycisk wyloguj.</label>
     <form action="#" th:action="@{/index}" method="post">
         <button class="btn btn-primary" style="    background-color: red; color: white; padding: 10px 20px; border: none; text-align: center; text-decoration: none; font-size: 16px; cursor: pointer; border-radius: 5px; margin: 15px auto 0; display: block;" type="submit" onclick="successfullyLogout()" value="Sign Out">Wyloguj</button>

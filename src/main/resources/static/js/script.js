@@ -1,29 +1,87 @@
-function successfullyLogout(){
-alert("Zostałeś pomyślnie wylogowany");
-}
-function validateInt() {
-    var inputValue = document.getElementById('userInput').value;
-
-    // Check if the input value is not an integer
-    if (isNaN(inputValue) || inputValue % 1 !== 0) {
-        alert('Wprowadzono błędne dane. Proszę zapisać wartość tylko za pomocą cyfr!');
-    }
+function successfullyLogout() {
+    alert("Zostałeś pomyślnie wylogowany");
 }
 
-function validateIntegerInput(inputElement) {
-    var errorMessageElement = inputElement.nextElementSibling; // Get the next sibling element (error message)
 
-    var inputValue = inputElement.value.trim();
-    var isValid = isInteger(inputValue);
+function validatePESELtype() {
+    var inputField = document.getElementById('peselInput');
+    var errorMessage = document.getElementById('errorMessage');
+    var submitButton = document.getElementById('submitButton');
 
-    if (isValid) {
-        errorMessageElement.textContent = ""; // Clear the error message
+    // Check if the input is a valid integer
+    if (!/^\d+$/.test(inputField.value)) {
+        // Show error message and disable the submit button
+        errorMessage.innerHTML = 'Wartość musi zawierać tylko cyfry.';
+        errorMessage.style.color = 'red';
+        submitButton.disabled = true;
     } else {
-        errorMessageElement.textContent = "Wartość należy wprowadzić tylko za pomocą liczb";
+        // Clear error message and enable the submit button
+        errorMessage.innerHTML = '';
+        submitButton.disabled = false;
+
     }
 }
 
-function isInteger(value) {
-    return Number.isInteger(parseInt(value, 10));
+function validate_nr_tel_type() {
+    var inputField = document.getElementById('nr_tel_Input');
+    var errorMessage = document.getElementById('error');
+    var submitButton = document.getElementById('submitButton');
+
+    // Check if the input is a valid integer
+    if (!/^\d+$/.test(inputField.value)) {
+        // Show error message and disable the submit button
+        errorMessage.innerHTML = 'Wartość musi zawierać tylko cyfry.';
+        errorMessage.style.color = 'red';
+        submitButton.disabled = true;
+    } else {
+        // Clear error message and enable the submit button
+        errorMessage.innerHTML = '';
+        submitButton.disabled = false;
+    }
 }
+
+
+$(function(){
+    var dtToday = new Date();
+
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+
+    var maxDate = year + '-' + month + '-' + day;
+
+    // or instead:
+    // var maxDate = dtToday.toISOString().substr(0, 10);
+
+
+    $('#yourDateInputId').attr('max', maxDate);
+});
+
+
+$(function(){
+    var dtToday = new Date();
+
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+
+    var maxDate = year + '-' + month + '-' + day;
+
+    // Initialize datepicker on the specified input
+    $('#yourDateInputId').attr('max', maxDate).datepicker();
+
+    // Display date picker when the specified div is clicked
+    $('#datePickerContainer').on('click', function() {
+        $('#yourDateInputId').datepicker('show');
+    });
+});
+
 

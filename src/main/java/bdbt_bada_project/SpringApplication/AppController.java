@@ -14,6 +14,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.sql.Date;
+
 
 @Configuration
 public class AppController implements WebMvcConfigurer {
@@ -38,6 +40,8 @@ public class AppController implements WebMvcConfigurer {
 
         @Autowired
         private PracownicyDAO daoP;
+        @Autowired
+        private BiletyDAO daoBilety;
 
         @RequestMapping("/main_admin/pracownicy")
         public String viewHomePage(Model model) {
@@ -276,49 +280,78 @@ public class AppController implements WebMvcConfigurer {
 
             return "redirect:/main_admin/uslugi";
         }
+//        @RequestMapping("/main_user")
+//        public String showUserPage(Model model){
+//            List<Bilety> biletList = daoBilety.listBiletyForClient(8);
+//            model.addAttribute("biletList", biletList);
+//            return "user/main_user";
+//        }
 
-        @RequestMapping("/main_user/new_form_usluga_inne")
-        public String showNewFormUslugiInne(Model model) {
-            Uslugi usluga = new Uslugi();
-            model.addAttribute("usluga", usluga);
-            usluga.setRodzaj_uslugi("Inne");
 
-            return "user/new_form_usluga_inne";
-        }
-
-        @RequestMapping("/main_user/new_form_usluga_doradztwo")
-        public String showNewFormUslugiDoradztwo(Model model) {
-            Uslugi usluga = new Uslugi();
-            model.addAttribute("usluga", usluga);
-            usluga.setRodzaj_uslugi("Doradztwo");
-
-            return "user/new_form_usluga_doradztwo";
-        }
-
-        @RequestMapping("/main_user/new_form_usluga_konsultacje")
-        public String showNewFormUslugiKonsultacje(Model model) {
-            Uslugi usluga = new Uslugi();
-            model.addAttribute("usluga", usluga);
-            usluga.setRodzaj_uslugi("Konsultacje");
-
-            return "user/new_form_usluga_konsultacje";
-        }
-
-        @RequestMapping("/main_user/new_form_usluga_finanse")
-        public String showNewFormUslugiFinanse(Model model) {
-            Uslugi usluga = new Uslugi();
-            model.addAttribute("usluga", usluga);
-            usluga.setRodzaj_uslugi("Finanse");
-
-            return "user/new_form_usluga_finanse";
-        }
-
-        @RequestMapping(value = "/main_user/saveUslugiUser", method = RequestMethod.POST)
-        public String saveU(@ModelAttribute("usluga") Uslugi uslugi){
-            daoU.saveUslugi(uslugi);
+        @RequestMapping("/main_user/deleteBilety/{Nr_biletu}")
+        public String delete(@PathVariable(name = "Nr_biletu") int Nr_biletu, @ModelAttribute("bilet")Bilety bilety) {
+            daoBilety.deleteBilety(Nr_biletu);
 
             return "redirect:/main_user";
         }
+
+        java.util.Date today = new java.util.Date();
+        Date sqlDate = new Date(today.getTime());
+
+        @RequestMapping(value = "/main_user/add/{Nr_uslugi}")
+        public String save(@PathVariable(name = "Nr_uslugi") int Nr_uslugi){
+            Bilety bilet = new Bilety();
+            bilet.setNr_klienta(8);
+            bilet.setNr_uslugi(Nr_uslugi);
+            bilet.setData_zakupu(sqlDate);
+            daoBilety.saveBilety(bilet);
+            return "redirect:/main_user";
+        }
+
+//        @RequestMapping("/main_user")
+//        public ModelAndView viewMojeDane(){
+//            ModelAndView mav = new ModelAndView("main_user");
+//            List<Bilety> bilet = daoBilety.listBiletyForClient();
+//            mav.addObject("bilet", bilet);
+//
+//            return mav;
+//        }
+
+
+
+//        @RequestMapping("/main_user/new_form_usluga_doradztwo")
+//        public String showNewFormUslugiDoradztwo(Model model) {
+//            Uslugi usluga = new Uslugi();
+//            model.addAttribute("usluga", usluga);
+//            usluga.setRodzaj_uslugi("Doradztwo");
+//
+//            return "user/new_form_usluga_doradztwo";
+//        }
+//
+//        @RequestMapping("/main_user/new_form_usluga_konsultacje")
+//        public String showNewFormUslugiKonsultacje(Model model) {
+//            Uslugi usluga = new Uslugi();
+//            model.addAttribute("usluga", usluga);
+//            usluga.setRodzaj_uslugi("Konsultacje");
+//
+//            return "user/new_form_usluga_konsultacje";
+//        }
+//
+//        @RequestMapping("/main_user/new_form_usluga_finanse")
+//        public String showNewFormUslugiFinanse(Model model) {
+//            Uslugi usluga = new Uslugi();
+//            model.addAttribute("usluga", usluga);
+//            usluga.setRodzaj_uslugi("Finanse");
+//
+//            return "user/new_form_usluga_finanse";
+//        }
+//
+//        @RequestMapping(value = "/main_user/saveUslugiUser", method = RequestMethod.POST)
+//        public String saveU(@ModelAttribute("usluga") Uslugi uslugi){
+//            daoU.saveUslugi(uslugi);
+//
+//            return "redirect:/main_user";
+//        }
 
         //Staz
 
@@ -327,7 +360,7 @@ public class AppController implements WebMvcConfigurer {
             List<Uslugi> listUslugi = daoU.listUslugi();
             model.addAttribute("listUslugi", listUslugi);
 
-            return "staz/uslugi";
+            return "staz/staz_uslugi";
         }
 
         @RequestMapping("/main_staz/new_form_staz_uslugi")
@@ -574,6 +607,8 @@ public class AppController implements WebMvcConfigurer {
             return "redirect:/main_admin/wynagrodzenia";
         }
 
+
+
         @RequestMapping
                 ("/main"
                 )
@@ -603,7 +638,14 @@ public class AppController implements WebMvcConfigurer {
             {
                 return "redirect:/index";
             }
+
         }
+
+        //Bilety
+
+
+
+
     }
     @RequestMapping(value={"/main_admin"})
     public String showAdminPage(Model model) {
