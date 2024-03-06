@@ -1,8 +1,4 @@
-Projekt w ramach przedmiotu Bazy Danych i Big Data przewidywał dwie części: 
-I - zaprojektowanie bazy danych na przydzielony temat (Sekretariat), stworzenie schematu ER
-II - praktyczne wdrożenie bazy danych, praktyka języka SQL, zaprojektowanie strony internetowej połączonej z bazą w języku Java oraz praktyka umiejętności frontendowych z użyciem HTML, CSS oraz JS.
+Projekt został zrealizowany w ramach przedmiotu Bazy danych i Big Data. Mieliśmy za zadanie zaprojektować bazę danych sekretariatu oraz zaprojektowanie strony internetowej współpracującej z bazą danych.
+Zadanie projektowe miało nauczyć nas podstaw tworzenia aplikacji webowej dla bazy danych, dlatego nie musieliśmy wykorzystać wszystkich relacji z bazy danych. 
 
-Część druga nie wymagała odtworzenia wszystkich tabel bazy, a jedynie kluczowych komponentów umożliwiąjących podstawowe funkcjonowanie oraz zareprezentowanie relacji. 
-Plik ER.png zawiera kompletny zestaw tablic na poziomie modelu logicznego, przedstawiających całą ideę projektu oraz relacje.
-
-Projekt został wykonany w parze z Błażejem Borowym. 
+Projekt współtworzony z Wioletą Żochowską.
